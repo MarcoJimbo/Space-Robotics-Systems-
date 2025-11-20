@@ -1,0 +1,69 @@
+{
+  "robot_name": "robot6R",
+  "base_frame": "base_link",
+  "tool_frame": "end_effector",
+  "joints_number": 6,
+
+  "joints": [
+    {
+      "name": "joint1",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q1",
+        "d": 0,
+        "a": 0,
+        "alpha": 0
+      }
+    },
+    {
+      "name": "joint2",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q2",
+        "d": 0,
+        "a": 1.0,
+        "alpha": 0
+      }
+    },
+    {
+      "name": "joint3",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q3",
+        "d": 0,
+        "a": 1.0,
+        "alpha": 0
+      }
+    },
+	{
+      "name": "joint4",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q4",
+        "d": 0,
+        "a": 1.0,
+        "alpha": 0
+      }
+    },
+	{
+      "name": "joint5",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q5",
+        "d": 0,
+        "a": 1.0,
+        "alpha": 0
+      }
+    },
+	{
+      "name": "joint6",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q6",
+        "d": 0,
+        "a": 1.0,
+        "alpha": 0
+      }
+    }
+  ]
+}

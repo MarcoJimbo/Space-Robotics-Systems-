@@ -1,0 +1,39 @@
+{
+  "robot_name": "robot",
+  "base_frame": "base_link",
+  "tool_frame": "end_effector",
+  "joints_number": 3,
+
+  "joints": [
+    {
+      "name": "joint1",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q1",
+        "d": 0,
+        "a": 1.0,
+        "alpha": 0
+      }
+    },
+    {
+      "name": "joint2",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q2",
+        "d": 0,
+        "a": 1.0,
+        "alpha": 0
+      }
+    },
+    {
+      "name": "joint3",
+      "type": "revolute",
+      "MDH": {
+        "theta": "q3",
+        "d": 0,
+        "a": 1.0,
+        "alpha": 0
+      }
+    }
+  ]
+}
