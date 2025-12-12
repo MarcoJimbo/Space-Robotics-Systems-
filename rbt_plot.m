@@ -1,4 +1,4 @@
-function rbt_plot(rbt,q,color)
+function rbt_plot(rbt,env,q,color)
 % La function fa in modo di visualizzare il manipolatore in una certa
 % configurazione
 %
@@ -30,7 +30,9 @@ end
 
 figure; hold on; grid on; axis equal;
 plot3(joint_pos(:,1), joint_pos(:,2), joint_pos(:,3), '-o', 'LineWidth', 2, 'MarkerSize', 6, 'MarkerFaceColor', 'r','Color',color);
+show(env{1})
+show(env{2})
 
 xlabel('X'); ylabel('Y'); zlabel('Z');
-title('Manipolatore 3D');
+title('HEIL IDRA');
 view(3);
