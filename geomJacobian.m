@@ -1,8 +1,8 @@
-function J = geomJacobian(rbt,varargin)
+function J = geomJacobian(rbt,q)
 % La function calcola la matrice jacobiana del manipolatore. Richiede come
 % INPUT
 % rbt               modello del manipolatore                               (file .json)
-% varargin{1} = q   vettore delle variabili dei giunti                     (vector nx1)
+% q                 vettore delle variabili dei giunti                     (vector nx1)
 %
 % OUTPUT
 % J                 matrice jacobiana corrispondente alla configurazione q (matrice 6xn)

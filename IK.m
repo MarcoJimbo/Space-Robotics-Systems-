@@ -10,8 +10,8 @@ function [Q] = IK(rbt,X,xyz)
 % OUTPUT
 % Q                 matrice le cui colonne corrispondono alle soluzioni            (matrix NxM)
 
-rbt1 = jsondecode(fileread(rbt));
-n_joints = rbt1.joints_number;
+robot = jsondecode(fileread(rbt));
+n_joints = robot.joints_number;
 q = sym('q', [n_joints 1], 'real');
 T_fk = FK(rbt,q);
 
