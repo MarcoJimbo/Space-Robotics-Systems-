@@ -1,20 +1,28 @@
-function rbt_plot(rbt,env,q,color)
+function rbt_plot(rbt,q,varargin)
 % La function fa in modo di visualizzare il manipolatore in una certa
 % configurazione
 %
 % INPUT
-% file .json che descriva il manipolatore
-% vettore delle coordinate dei giunti
-% colore del manipolatore
+% rbt                        file .json che descriva il manipolatore       (stringa)
+% q                          vettore delle coordinate dei giunti           (vettore nx1)
+% varargin{1}                colore del manipolatore                       (stringa)
+% varargin{2}                environment del manipolatore                  (cella)
 %
 % OUTPUT
 % plot del manipolatore nella configurazione specificata
 
 rbt = jsondecode(fileread(rbt));
 n = rbt.joints_number;
-j = rbt.joints;
 joint_pos = zeros(n,3);
 T = eye(4);
+color = 'r';
+env = {};
+
+% controllo input
+if nargin >= 4, color = varargin{1}; env = varargin{2}; end
+if nargin >= 3, color = varargin{1}; end
+
+% plot
 for i = 1:n
     j = rbt.joints(i);
     if strcmp(j.type, 'revolute')
@@ -30,9 +38,8 @@ end
 
 figure; hold on; grid on; axis equal;
 plot3(joint_pos(:,1), joint_pos(:,2), joint_pos(:,3), '-o', 'LineWidth', 2, 'MarkerSize', 6, 'MarkerFaceColor', 'r','Color',color);
-show(env{1})
-show(env{2})
+
+if ~isempty(env), show(env{1}), show(env{2}), end
 
 xlabel('X'); ylabel('Y'); zlabel('Z');
-title('HEIL IDRA');
 view(3);

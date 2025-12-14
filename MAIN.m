@@ -21,4 +21,5 @@ env = setObstacles(T_Station_Base);
 % plot HEILConfiguration
 q = [0,-0.5,0,0,0];
 color = [1 0 0];
-rbt_plot("IDRA.json",env,q,color)
+rbt_plot("IDRA.json",q,color,env)
+title('HEIL IDRA');
