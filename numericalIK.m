@@ -17,8 +17,6 @@ function q = numericalIK(rbt,X,xyz,q0,varargin)
 %
 % OUTPUT
 % q                 soluzione numerica della cinematica inversa            (matrix NxM)
-warning('la funzione va ancora finita, problemi con la ricostruzione della posa corrente')
-
 
 tol = 1e-5;
 max_iter = 500;
@@ -33,7 +31,7 @@ i = 0;
 while e > tol || i < max_iter
 [T,p] = FK(rbt,q0);
 X0(1:3) = p;
-X0(4:6) = rotm2eul(T(1:3,1:3),xyz);
+X0(4:6) = R2eul(T(1:3,1:3),xyz);
 e = X - X0;
 J = geomJacobian(rbt,q0);
 dq = inv(J' * J + k * eye(n_joints)) * e;
