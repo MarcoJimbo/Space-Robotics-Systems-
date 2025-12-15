@@ -19,7 +19,14 @@ T_Station_Base = [ 1 , 0 , 0 , -0.5 ;...
 env = setObstacles(T_Station_Base);
 
 % plot HEILConfiguration
-q = [0,-0.5,0,0,0];
+q = [0,-0.5,0.1,0.5,0];
 color = [1 0 0];
-rbt_plot("IDRA.json",q,color,env)
+rbt_plot(IDRA,q,color,env)
 title('HEIL IDRA');
+
+%%
+[T,p] = FK(IDRA,q);
+alpha = R2eul(T(1:3,1:3),"123");
+X = [T(1:3,4);alpha];
+[Qn,status] = numerical_IK(IDRA, X, "123",[-2;0;4;0.6;0]);
+[T1,p1] = FK(IDRA,Qn);

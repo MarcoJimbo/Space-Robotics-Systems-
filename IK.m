@@ -18,13 +18,13 @@ T_fk = FK(rbt,q);
 T = sym(eye(4));
 switch xyz
     case '123'
-        T = rot2tr(X(6),'z') * rot2tr(X(5),'y') * rot2tr(X(4),'x') * translation2tr(X(1:3));
+        T = rot2tr(X(6),'z') * rot2tr(X(5),'y') * rot2tr(X(4),'x');
     case '313'
-        T = rot2tr(X(6),'z') * rot2tr(X(5),'x') * rot2tr(X(4),'z') * translation2tr(X(1:3));
+        T = rot2tr(X(6),'z') * rot2tr(X(5),'x') * rot2tr(X(4),'z');
     case '321'
-        T = rot2tr(X(6),'x') * rot2tr(X(5),'y') * rot2tr(X(4),'z') * translation2tr(X(1:3));
+        T = rot2tr(X(6),'x') * rot2tr(X(5),'y') * rot2tr(X(4),'z');
 end
-
+T = [T(1:3,1:3),x(1:3)];
 eq = sym('eq', [6 1]);
 for i = 1:3
 eq(i) = T(i,4) - T_fk(i,4);
