@@ -1,4 +1,4 @@
-function [q,status] = numericalIK(rbt,X,xyz,q0,varargin)
+function [q,status] = numerical_IK(rbt,X,xyz,q0,varargin)
 % Questa function risolve numericamente la cinematica inversa di un
 % manipolatore. Si parte da un guess iniziale q0, si calcola il vettore di
 % coordinate cartesiane corrispondente X0 e l'errore X - X0. Tramite la
@@ -18,14 +18,15 @@ function [q,status] = numericalIK(rbt,X,xyz,q0,varargin)
 % OUTPUT
 % q                 soluzione numerica della cinematica inversa            (matrix NxM)
 
-tol = 1e-5;
-max_iter = 500;
+tol = 1e-10;
+max_iter = 5000;
 k = 0.1;
 n_joints = rbt.joints_number;
 % controllo input
 if nargin >= 5, tol = varargin{1}; end
 if nargin >= 6, tol = varargin{1}; max_iter = varargin{2}; end
 if nargin >= 7, tol = varargin{1}; max_iter = varargin{2}; k = varargin{3}; end
+q0 = reshape(q0,n_joints,1);
 
 i = 0;
 e = 1000;
@@ -35,7 +36,7 @@ X0(1:3) = p;
 X0(4:6) = R2eul(T(1:3,1:3),xyz);
 e = X - X0';
 J = geomJacobian(rbt,q0);
-dq = inv(J' * J + k^2 * eye(n_joints))* J' * e;
+dq = (J' * J + k^2 * eye(n_joints))\ J' * e;
 q0 = q0 + dq;
 i = i + 1;
 end
