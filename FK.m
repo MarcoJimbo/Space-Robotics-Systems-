@@ -4,7 +4,7 @@ function [T,p] = FK(rbt,q,varargin)
 % giunti. 
 %
 % INPUT
-% rbt                            modello del manipolatore                               (file .json)
+% rbt                            modello del manipolatore                               (struct)
 % q                              vettore delle variabili dei giunti                     (vector nx1)
 % varargin{1} = joint_name       nome del giunto di cui si vole calcolare T             (stringa)
 %
@@ -12,16 +12,15 @@ function [T,p] = FK(rbt,q,varargin)
 % T                              matrice di trasformazione joint ---> base              (matrice 4x4)                 
 % p                              vettore posizione del giunto selezionato               (vettore 3x1)
 
-rbt = jsondecode(fileread(rbt));
-n_joints = length(rbt.joints);
-j = rbt.joints;
+n_joints = rbt.joints_number;
+j = [rbt.joints; rbt.end_effector];
 T = eye(4);
 
 if isempty(varargin)
-   n = n_joints;
+   n = n_joints+1;
 else
     joint_name = varargin{1};
-    for i = 1:n_joints
+    for i = 1:n_joints+1
         if strcmp(j(i).name,joint_name)
             n = i;
         end
@@ -29,14 +28,16 @@ else
 end
 
 for i = 1:n
-    j = rbt.joints(i);
-    if strcmp(j.type, 'revolute')
+    if strcmp(j(i).type, 'revolute')
        theta = q(i);
-       d = j.MDH.d;
-    else
+       d = j(i).MDH.d;
+    elseif strcmp(j(i).type, 'prismatic')
        d = q(i);
-       theta = j.MDH.theta;
+       theta = j(i).MDH.theta;
+    else
+        d = 0;
+        theta = 0;
     end
-    T = T * MDH2tr(theta,d,j.MDH.alpha,j.MDH.a);
+    T = T * MDH2tr(theta,d,j(i).MDH.alpha,j(i).MDH.a);
 end
 p = T(1:3,4);

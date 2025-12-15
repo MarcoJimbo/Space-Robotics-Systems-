@@ -1,4 +1,4 @@
-function q = numericalIK(rbt,X,xyz,q0,varargin)
+function [q,status] = numericalIK(rbt,X,xyz,q0,varargin)
 % Questa function risolve numericamente la cinematica inversa di un
 % manipolatore. Si parte da un guess iniziale q0, si calcola il vettore di
 % coordinate cartesiane corrispondente X0 e l'errore X - X0. Tramite la
@@ -7,7 +7,7 @@ function q = numericalIK(rbt,X,xyz,q0,varargin)
 % convergenza.
 %
 % INPUT
-% rbt               modello del manipolatore                               (file .json)
+% rbt               modello del manipolatore                               (struct)
 % X                 vettore di coordinate cartesiane                       (6x1)
 % q0                first guess                                            (string)
 % xyz               sequenza degli assi di rotazione                       (string)
@@ -21,22 +21,24 @@ function q = numericalIK(rbt,X,xyz,q0,varargin)
 tol = 1e-5;
 max_iter = 500;
 k = 0.1;
-
+n_joints = rbt.joints_number;
 % controllo input
 if nargin >= 5, tol = varargin{1}; end
 if nargin >= 6, tol = varargin{1}; max_iter = varargin{2}; end
 if nargin >= 7, tol = varargin{1}; max_iter = varargin{2}; k = varargin{3}; end
 
 i = 0;
-while e > tol || i < max_iter
+e = 1000;
+while norm(e) > tol && i < max_iter
 [T,p] = FK(rbt,q0);
 X0(1:3) = p;
 X0(4:6) = R2eul(T(1:3,1:3),xyz);
-e = X - X0;
+e = X - X0';
 J = geomJacobian(rbt,q0);
-dq = inv(J' * J + k * eye(n_joints)) * e;
+dq = inv(J' * J + k^2 * eye(n_joints))* J' * e;
 q0 = q0 + dq;
 i = i + 1;
 end
 q = q0;
 
+if norm(e) < tol, status = 'success'; else, status = 'fail'; end

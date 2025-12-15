@@ -3,7 +3,7 @@ function rbt_plot(rbt,q,varargin)
 % configurazione
 %
 % INPUT
-% rbt                        file .json che descriva il manipolatore       (stringa)
+% rbt                        struttura che descriva il manipolatore        (struct)
 % q                          vettore delle coordinate dei giunti           (vettore nx1)
 % varargin{1}                colore del manipolatore                       (stringa)
 % varargin{2}                environment del manipolatore                  (cella)
@@ -11,7 +11,7 @@ function rbt_plot(rbt,q,varargin)
 % OUTPUT
 % plot del manipolatore nella configurazione specificata
 
-rbt = jsondecode(fileread(rbt));
+
 n = rbt.joints_number;
 joint_pos = zeros(n,3);
 T = eye(4);

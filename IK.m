@@ -3,15 +3,15 @@ function [Q] = IK(rbt,X,xyz)
 % manipolatore
 %
 % INPUT
-% rbt               modello del manipolatore           (file .json)
+% rbt               modello del manipolatore           (struct)
 % X                 vettore di coordinate cartesiane   (6x1)
 % xyz               sequenza degli assi di rotazione   (string)
 %
 % OUTPUT
 % Q                 matrice le cui colonne corrispondono alle soluzioni            (matrix NxM)
 
-robot = jsondecode(fileread(rbt));
-n_joints = robot.joints_number;
+
+n_joints = rbt.joints_number;
 q = sym('q', [n_joints 1], 'real');
 T_fk = FK(rbt,q);
 
