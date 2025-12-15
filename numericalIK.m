@@ -38,4 +38,5 @@ dq = inv(J' * J + k * eye(n_joints)) * e;
 q0 = q0 + dq;
 i = i + 1;
 end
+q = q0;
 
