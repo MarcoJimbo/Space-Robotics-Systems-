@@ -1,4 +1,22 @@
 function [q,dq,ddq] = whole_trajectory(theta,dtheta,ddtheta,t,t_b,t_jk,show)
+% la funzione ricostruisce l'andamento della traiettoria nel tempo
+% assumendo un profilo trapezoidale per la velocità e la plotta
+% INPUT
+%
+% theta              vettore delle coordinate angolari nel tempo           (vettore Nx1)          
+% dtheta             vettore delle velocità nelle fasi lineari             (vettore N-1x1)
+% ddtheta            vettore delle accelerazioni nei tratti parabolici     (vettore Nx1)        
+% t                  vettore dei nodi temporali                            (vettore Nx1)
+% t_b                vettore contenente le durate dei periodi di blend     (vettore Nx1)
+% t_kj               vettore contenente le durate dei periodi lineari      (vettore N-1x1)
+% show               valore logico, se 1 la funzione plotta i risultati    (logico, 1 o 0)
+%
+% OUTPUT
+% q, dq, ddq         vettori di angoli, velocità e accelerazione del giunto
+%                    il numero di elementi dipende dalla variabile n_plot
+%                    che per il momento è 'hard coded' (va modificata da
+%                    dentro la function)
+
 
 N = length(theta);
 n_plot = 100;
@@ -58,11 +76,11 @@ q = [q q_bN]; dq = [dq dq_bN]; ddq = [ddq ddq_bN];
 t_span = [t_span tbN_span];
 
 if show
-   figure(1)
+   subplot(1,3,1)
    plot(t_span,q,'LineWidth',3,'Color','b')
-   figure(2)
+   subplot(1,3,2)
    plot(t_span,dq,'LineWidth',3,'Color','r')
-   figure(3)
+   subplot(1,3,3)
    plot(t_span,ddq,'LineWidth',3,'Color','g')
 end
 

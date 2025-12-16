@@ -36,7 +36,7 @@ for i = 1:n
     joint_pos(i,:) = T(1:3,4)';
 end
 
-figure; hold on; grid on; axis equal;
+hold on; grid on; axis equal;
 plot3(joint_pos(:,1), joint_pos(:,2), joint_pos(:,3), '-o', 'LineWidth', 2, 'MarkerSize', 6, 'MarkerFaceColor', color,'Color',color);
 
 if ~isempty(env), show(env{1}), show(env{2}), end

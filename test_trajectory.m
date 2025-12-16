@@ -1,0 +1,13 @@
+%% test trajectory
+IDRA = jsondecode(fileread("IDRA.json"));
+theta = [0	0.1	0.240430418968541	0.5	0.708359146614300; ...
+-0.5	0	1.40388784741606	1.5	1.54467124552824; ...
+0.1	2	3.80783051868944	4	4.68317576388454; ...
+0.5	4.3	3.50212427012241	3.4	3.31243136899572; ...
+0	-4	-8.05027763202994	-9	-10.4667647364490];
+t = [0 60 120 180 240];
+for i = 1:5
+[conf,dtheta,ddtheta,t_b,t_jk] = trapz_traj(theta(i,:),t,deg2rad(0.5));
+figure(i)
+[q(i,:),dq(i,:),ddq(i,:)] = whole_trajectory(conf,dtheta,ddtheta,t,t_b,t_jk,1);
+end
