@@ -43,4 +43,4 @@ t_jk(1) = dt(1) - t_b(1) - 0.5 * t_b(2);
 for i = 2:N-2
     t_jk(i) = dt(i) - 0.5 * t_b(i) - 0.5 * t_b(i+1);
 end
-t_jk(N) = dt(N-1) - t_b(N) - 0.5 * t_b(N-1);
+t_jk(N-1) = dt(N-1) - t_b(N) - 0.5 * t_b(N-1);

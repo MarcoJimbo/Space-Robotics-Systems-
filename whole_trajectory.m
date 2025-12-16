@@ -20,7 +20,7 @@ tl1_end = tl1_start + t_jk(1);
 tl1_span = linspace(tl1_start,tl1_end,n_plot);
 ddq_l1 = zeros(1,n_plot);
 dq_l1  = dtheta(1) * ones(1,n_plot);
-q_l1 = q_b1(end) + dtheta(1) * tl1_span;
+q_l1 = q_b1(end) + dtheta(1) * (tl1_span - tl1_start);
 
 q = [q q_b1 q_l1]; dq = [dq dq_b1 dq_l1]; ddq = [ddq ddq_b1 ddq_l1];
 t_span = [tb1_span tl1_span];
@@ -58,11 +58,11 @@ q = [q q_bN]; dq = [dq dq_bN]; ddq = [ddq ddq_bN];
 t_span = [t_span tbN_span];
 
 if show
-   subplot(1,3,1)
+   figure(1)
    plot(t_span,q,'LineWidth',3,'Color','b')
-   subplot(1,3,2)
+   figure(2)
    plot(t_span,dq,'LineWidth',3,'Color','r')
-   subplot(1,3,3)
+   figure(3)
    plot(t_span,ddq,'LineWidth',3,'Color','g')
 end
 
