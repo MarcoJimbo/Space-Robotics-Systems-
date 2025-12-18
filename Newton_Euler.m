@@ -1,9 +1,11 @@
 function [tau] = Newton_Euler(rbt,q,q_dot,q_ddot,W,h,g)
 
     %%% function che dati in input il modello del manipolatore, la sua
-    %%% configurazione in termini di variabili di giunto e la loro derivata
-    %%% prima e seconda da in output le componenti lungo l'asse dei giunti dei
-    %%% momenti/forze globali scambiate alle interfacce dei giunti. 
+    %%% configurazione in termini di variabili di giunto , la derivata
+    %%% temporale prima e seconda delle variabili di giunto, peso e altezza
+    %%% del payload e costante gravitazionale da in output le componenti 
+    %%% lungo l'asse dei giunti dei momenti/forze globali scambiate alle 
+    %%% interfacce dei giunti. 
     
     % INPUT:
     % rbt:                struct [1x1] = modello manipolatore 
