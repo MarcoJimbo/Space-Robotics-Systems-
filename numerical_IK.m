@@ -18,8 +18,8 @@ function [q,status] = numerical_IK(rbt,X,xyz,q0,varargin)
 % OUTPUT
 % q                 soluzione numerica della cinematica inversa            (matrix NxM)
 
-tol = 1e-10;
-max_iter = 5000;
+tol = 1e-5;
+max_iter = 10000;
 k = 0.1;
 n_joints = rbt.joints_number;
 % controllo input
