@@ -45,7 +45,7 @@ qdd_sym  = sym('qdd'  , [n_joints 1], 'real');
 tau_fun = matlabFunction(tau_sym, 'Vars', {q_sym, qd_sym, qdd_sym});
 tau_num = tau_fun(q_val, qd_val, qdd_val);
 % i risultati ottenuti in numerico o sym coincidono :)
-[M,b,G,V,B,C,mu,nu,status_decompose_tau] = decompose_tau(tau_sym,qd_sym,qdd_sym);
+[M,G,V,B,C,mu,nu,status_decompose_tau] = decompose_tau(tau_sym,qd_sym,qdd_sym);
 % TO DO creare diverse function che valutano separatamente M C G B V
 
 

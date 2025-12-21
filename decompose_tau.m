@@ -1,23 +1,22 @@
-function[M,b,G,V,B,C,mu,nu,status_decompose_tau] = decompose_tau(tau_sym,qd_sym,qdd_sym)
+function[M,G,V,B,C,mu,nu,status] = decompose_tau(tau_sym,qd_sym,qdd_sym)
 %%% function che dato in input il vettore tau in simbolico e la derivata
 %%% temporale prima e seconda delle variabili di giunto decompone tau nelle
 %%% varie componenti in cui può scomporsi il momento ai giunti.
 
 % INPUT:
-% tau_sym:
-% qd_sym:
-% qdd_sym:
+% tau_sym:                     sym [nx1] = espressione simbolica delle forze/momenti ai giunti non considerando attriti e contributo inerziale motore
+% qd_sym:                      sym [nx1] = derivata temporale prima delle variabili di giunto
+% qdd_sym:                     sym [nx1] = derivata temporale seconda delle variabili di giunto
 
 % OUTPUT:
-% M:
-% b:
-% G:
-% V:
-% B:
-% C:
-% mu:
-% nu:
-% status_decompose_tau:
+% M:                           sym [nxn] = matrice di massa               
+% G:                           sym [nx1] = vettore delle forze gravitazionali
+% V:                           sym [nx1] = vettore dei coefficienti delle forze di coriolis e centrifughe 
+% B:                           sym [nxn(n-1)/2] = matrice dei coefficienti delle forze di coriolis
+% C:                           sym [nxn] = matrice dei coefficienti delle forze centrifughe
+% mu:                          sym [nx1] = vettore delle velocità^2 centrifughe (joint squared velocities)
+% nu:                          sym [n(n-1)/2X1] = vettore delle velocità^2 di coriolis (joint crossed velocities)
+% status:                      string    = decomposition status
 
     % number of joints
     n_joints = size(tau_sym,1);
@@ -30,7 +29,7 @@ function[M,b,G,V,B,C,mu,nu,status_decompose_tau] = decompose_tau(tau_sym,qd_sym,
     V = simplify(b - G);
     % verifica correttezza
     tau_rec = simplify(M*qdd_sym + V + G);
-    err1 = simplify(tau_sym - tau_rec);   % deve dare vettore nullo --> lo fa :)
+    err1 = simplify(tau_sym - tau_rec);   % deve dare vettore nullo 
     % estrarre B e C 
     % mu = [qd1^2; ...; qdn^2]
     qd0  = sym(zeros(n_joints,1));
@@ -67,17 +66,15 @@ function[M,b,G,V,B,C,mu,nu,status_decompose_tau] = decompose_tau(tau_sym,qd_sym,
     end
     B = simplify(B);
     tau_rec = simplify(M*qdd_sym + B*nu + C*mu + G);
-    err2 = simplify(tau_sym - tau_rec);  % deve essere vettore nullo --> lo è :)
+    err2 = simplify(tau_sym - tau_rec);  % deve essere vettore nullo 
     
     ok1 = all(isAlways(err1(:) == 0));
     ok2 = all(isAlways(err2(:) == 0));
     
     if ~ok1 || ~ok2
-        status_decompose_tau = "fail decomposition";
+        status = "fail decomposition";
     else
-        status_decompose_tau = "successful decomposition";
+        status = "successful decomposition";
     end
-
-
 
 end
