@@ -7,7 +7,7 @@ theta = [0	0.1	0.240430418968541	0.5	0.708359146614300; ...
 0	-4	-8.05027763202994	-9	-10.4667647364490];
 t = [0 60 120 180 240];
 for i = 1:5
-[conf,dtheta,ddtheta,t_b,t_jk] = trapz_traj(theta(i,:),t,deg2rad(0.5));
+[conf,dtheta,ddtheta,t_b,t_jk] = trapz_traj(theta(i,:),t,1.3);
 figure(i)
 [q(i,:),dq(i,:),ddq(i,:)] = whole_trajectory(conf,dtheta,ddtheta,t,t_b,t_jk,1);
 end
