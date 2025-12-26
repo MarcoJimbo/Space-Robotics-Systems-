@@ -30,7 +30,7 @@ dtheta(:,1) = (theta(:,2) - theta(:,1))./(dt - 0.5*t_b(:,1));
 for i = 2:N-1
     ddtheta_max = 4 * abs(theta(:,i) - theta(:,i-1)) / dt^2;
     dtheta(:,i) = (theta(:,i+1) - theta(:,i))/dt;
-    ddtheta(:,i) = sign(dtheta(:,i)-dtheta(:,i-1)) .* ddtheta_max;
+    ddtheta(:,i) = sign(dtheta(:,i) - dtheta(:,i-1)) .* ddtheta_max;
     t_b(:,i) = (dtheta(:,i) - dtheta(:,i-1))./ddtheta(:,i);
 end
 % ultimo tratto
