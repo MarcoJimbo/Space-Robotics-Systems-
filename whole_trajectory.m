@@ -14,6 +14,9 @@ function [q,dq,ddq] = whole_trajectory(theta,dtheta,ddtheta,dt,t_b,t_jk)
 % q, dq, ddq         vettori di angoli, velocità e accelerazione del giunto
 
 
+% SISTEMARE CONDIZIONI INIZIALI DI VELOCITA E POSIZIUONE PER OGNI TRATTO
+
+
 N = length(theta);
 f_sample = 200;
 dt_sample = 1/f_sample;
@@ -29,10 +32,10 @@ i = 1;
 tic = 0;
 ti_start = 0;
 q(end) = theta(1);
-while tic < t_end && i < N
+while tic <= t_end && i < N
     ti_blend = ti_start + t_b(i);
     ti_end = ti_start + t_b(i) + t_jk(i);
-    if tic > ti_end
+    if tic >= ti_end
         i = i+1;
         ti_start = tic;
     end
@@ -41,14 +44,12 @@ while tic < t_end && i < N
         dqb =  ddqb * (tic - ti_start);
         qb =  q(end) + ddqb * (tic - ti_start).^2 * 0.5;
         q = [q qb];    dq = [dq dqb];   ddq = [ddq ddqb];
-        ti_start = tic;
         tic = tic + dt_sample;
-    elseif tic > ti_blend && tic < ti_end
+    elseif tic >= ti_blend && tic < ti_end
         ddql =  0;
         dql  =  dtheta(i);
         ql =  q(end) + dql * (tic- ti_blend);
         q = [q ql];    dq = [dq dql];   ddq = [ddq ddql];
-        ti_start = tic;
         tic = tic + dt_sample;
     end
 end
@@ -56,8 +57,8 @@ end
 
 while tic < t_end
 ddqb = ddtheta(N);
-dqb =  ddqb * (tic - ti_start);
-qb =  q(end) + ddqb * (tic - ti_start).^2 * 0.5;
+dqb =  ddqb * (tic - ti_start);                         % aggiungere condizione al controno per la velocità
+qb =  q(end) + ddqb * (tic - ti_start).^2 * 0.5;        % cambiare condizione al contorno
 q = [q qb];    dq = [dq dqb];   ddq = [ddq ddqb];
 tic = tic + dt_sample;
 end

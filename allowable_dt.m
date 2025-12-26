@@ -23,7 +23,7 @@ function dt = allowable_dt(ddtheta_max,theta,k)
 dt_mat = zeros(M,N-1);
 for i = 1:N-1
     for j = 1:M
-    dt_mat(j,i) = k * sqrt(abs(theta(j,i+1) - theta(j,i))/ddtheta_max(j));
+    dt_mat(j,i) = k * sqrt(4 * abs(theta(j,i+1) - theta(j,i))/ddtheta_max(j));
     end
 end
 

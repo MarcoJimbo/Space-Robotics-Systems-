@@ -10,7 +10,7 @@ ddtheta_max = deg2rad([30 30 30 30 30]);
 k = 1.2;
 dt = allowable_dt(ddtheta_max,theta,k);
 [q,dq,ddq,t_b,t_jk] = trapz_traj(theta,dt);
-[q,dq,ddq] = whole_trajectory(q(1,:),dq(1,:),ddq(1,:),dt,t_b,t_jk);
+[q,dq,ddq] = whole_trajectory(q(2,:),dq(2,:),ddq(2,:),dt,t_b,t_jk);
 
 subplot(1,3,1)
 plot(q,'r')
