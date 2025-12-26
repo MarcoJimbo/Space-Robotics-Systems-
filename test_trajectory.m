@@ -6,3 +6,16 @@ theta = [0	0.1	0.240430418968541	0.5	0.708359146614300; ...
 0.5	4.3	3.50212427012241	3.4	3.31243136899572; ...
 0	-4	-8.05027763202994	-9	-10.4667647364490];
 
+ddtheta_max = deg2rad([30 30 30 30 30]);
+k = 1.2;
+dt = allowable_dt(ddtheta_max,theta,k);
+[q,dq,ddq,t_b,t_jk] = trapz_traj(theta,dt);
+[q,dq,ddq] = whole_trajectory(q(1,:),dq(1,:),ddq(1,:),dt,t_b,t_jk);
+
+subplot(1,3,1)
+plot(q,'r')
+subplot(1,3,2)
+plot(dq,'b')
+subplot(1,3,3)
+plot(ddq,'g')
+

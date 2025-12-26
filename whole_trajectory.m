@@ -29,7 +29,7 @@ i = 1;
 tic = 0;
 ti_start = 0;
 q(end) = theta(1);
-while tic < t_end
+while tic < t_end && i < N
     ti_blend = ti_start + t_b(i);
     ti_end = ti_start + t_b(i) + t_jk(i);
     if tic > ti_end
@@ -39,15 +39,26 @@ while tic < t_end
     if tic < ti_blend
         ddqb = ddtheta(i);
         dqb =  ddqb * (tic - ti_start);
-        qb =  q(end) + ddtheta(i) * (tic - ti_start).^2 * 0.5;
+        qb =  q(end) + ddqb * (tic - ti_start).^2 * 0.5;
         q = [q qb];    dq = [dq dqb];   ddq = [ddq ddqb];
+        ti_start = tic;
         tic = tic + dt_sample;
-    elseif tic > ti_start + t_b(i) && tic < ti_end
+    elseif tic > ti_blend && tic < ti_end
         ddql =  0;
         dql  =  dtheta(i);
-        ql =  q(end) + dtheta(i) * (t- ti_blend);
+        ql =  q(end) + dql * (tic- ti_blend);
         q = [q ql];    dq = [dq dql];   ddq = [ddq ddql];
+        ti_start = tic;
         tic = tic + dt_sample;
     end
- end
+end
+% ultimo tratto di blend
+
+while tic < t_end
+ddqb = ddtheta(N);
+dqb =  ddqb * (tic - ti_start);
+qb =  q(end) + ddqb * (tic - ti_start).^2 * 0.5;
+q = [q qb];    dq = [dq dqb];   ddq = [ddq ddqb];
+tic = tic + dt_sample;
+end
 end
