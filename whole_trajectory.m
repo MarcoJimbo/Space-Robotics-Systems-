@@ -28,6 +28,7 @@ ddq = zeros(1,L);
 i = 1;
 tic = 0;
 ti_start = 0;
+q(end) = theta(1);
 while tic < t_end
     ti_blend = ti_start + t_b(i);
     ti_end = ti_start + t_b(i) + t_jk(i);
@@ -38,7 +39,7 @@ while tic < t_end
     if tic < ti_blend
         ddqb = ddtheta(i);
         dqb =  ddqb * (tic - ti_start);
-        qb =  theta(i) + ddtheta(i) * (tic - ti_start).^2 * 0.5;
+        qb =  q(end) + ddtheta(i) * (tic - ti_start).^2 * 0.5;
         q = [q qb];    dq = [dq dqb];   ddq = [ddq ddqb];
         tic = tic + dt_sample;
     elseif tic > ti_start + t_b(i) && tic < ti_end
