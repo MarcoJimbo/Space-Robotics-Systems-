@@ -1,0 +1,107 @@
+{
+  "robot_name": "IDRA_sym",
+  "base_frame": "base_link",
+  "tool_frame": "end_effector",
+  "joints_number": 5,
+
+  "parameters": [
+    "L2","L3","L4","LEE",
+    "m2","m3","m4","m5",
+    "c2","c3","c4","c5",
+    "Ixx2","Iyy2","Izz2",
+    "Ixx3","Iyy3","Izz3",
+    "Ixx4","Iyy4","Izz4",
+    "Ixx5","Iyy5","Izz5",
+
+    "Im1","bm1","tcm1","eta1","Rm1","km1","ke1",
+    "Im2","bm2","tcm2","eta2","Rm2","km2","ke2",
+    "Im3","bm3","tcm3","eta3","Rm3","km3","ke3",
+    "Im4","bm4","tcm4","eta4","Rm4","km4","ke4",
+    "Im5","bm5","tcm5","eta5","Rm5","km5","ke5"
+  ],
+
+  "links": [
+    {
+      "name": "link1",
+      "type": "fixtious",
+      "lenght": 0,
+      "mass": 0,
+      "inertia": { "Ixx": 0, "Iyy": 0, "Izz": 0 },
+      "CoM": 0
+    },
+    {
+      "name": "link2",
+      "type": "physical",
+      "lenght": "L2",
+      "mass": "m2",
+      "inertia": { "Ixx": "Ixx2", "Iyy": "Iyy2", "Izz": "Izz2" },
+      "CoM": "c2"
+    },
+    {
+      "name": "link3",
+      "type": "physical",
+      "lenght": "L3",
+      "mass": "m3",
+      "inertia": { "Ixx": "Ixx3", "Iyy": "Iyy3", "Izz": "Izz3" },
+      "CoM": "c3"
+    },
+    {
+      "name": "link4",
+      "type": "physical",
+      "lenght": "L4",
+      "mass": "m4",
+      "inertia": { "Ixx": "Ixx4", "Iyy": "Iyy4", "Izz": "Izz4" },
+      "CoM": "c4"
+    },
+    {
+      "name": "link5",
+      "type": "physical",
+      "lenght": "LEE",
+      "mass": "m5",
+      "inertia": { "Ixx": "Ixx5", "Iyy": "Iyy5", "Izz": "Izz5" },
+      "CoM": "c5"
+    }
+  ],
+
+  "joints": [
+    {
+      "name": "joint1",
+      "type": "revolute",
+      "MDH": { "theta": "q1", "d": 0, "a": 0, "alpha": 0 },
+      "DC_motor": { "I": "Im1", "b": "bm1", "tc": "tcm1", "gear_ratio": "eta1", "R": "Rm1", "km": "km1", "ke": "ke1" }
+    },
+    {
+      "name": "joint2",
+      "type": "revolute",
+      "MDH": { "theta": "q2", "d": 0, "a": 0, "alpha": "-pi/2" },
+      "DC_motor": { "I": "Im2", "b": "bm2", "tc": "tcm2", "gear_ratio": "eta2", "R": "Rm2", "km": "km2", "ke": "ke2" }
+    },
+    {
+      "name": "joint3",
+      "type": "revolute",
+      "MDH": { "theta": "q3", "d": 0, "a": "L2", "alpha": 0 },
+      "DC_motor": { "I": "Im3", "b": "bm3", "tc": "tcm3", "gear_ratio": "eta3", "R": "Rm3", "km": "km3", "ke": "ke3" }
+    },
+    {
+      "name": "joint4",
+      "type": "revolute",
+      "MDH": { "theta": "q4", "d": 0, "a": "L3", "alpha": 0 },
+      "DC_motor": { "I": "Im4", "b": "bm4", "tc": "tcm4", "gear_ratio": "eta4", "R": "Rm4", "km": "km4", "ke": "ke4" }
+    },
+    {
+      "name": "joint5",
+      "type": "revolute",
+      "MDH": { "theta": "q5", "d": 0, "a": "L4", "alpha": 0 },
+      "DC_motor": { "I": "Im5", "b": "bm5", "tc": "tcm5", "gear_ratio": "eta5", "R": "Rm5", "km": "km5", "ke": "ke5" }
+    }
+  ],
+
+  "end_effector": [
+    {
+      "name": "joint_EE",
+      "type": "fixed",
+      "MDH": { "theta": 0, "d": 0, "a": "LEE", "alpha": 0 },
+      "DC_motor": { "I": 0, "b": 0, "tc": 0, "gear_ratio": 1, "R": 0, "km": 0, "ke": 0 }
+    }
+  ]
+}

@@ -18,25 +18,52 @@ T_Station_Base = [ 1 , 0 , 0 , -0.5 ;...
 % obstacles wrt Base
 env = setObstacles(T_Station_Base);
 
-% plot HEILConfiguration
+% plot Start Configuration
 q_start = [0; -2.4435; 1.5708; 1.5708; 1.5708];
 color = [1 0 0];
 rbt_plot(IDRA,q_start,color,env)
 title('HEIL IDRA');
 
 %% Inverse Kinematics
+
+% sample configuration wrt STation
 X_sample = [1; 0; -0.25];
 Phi_Sample_Station = deg2rad([0; 90; 0]);
+% target configuration wrt Sation
+X_target = [0 ; 0; -0.25];
+Phi_Target_Station = deg2rad([0; -90; 0]);
+
+% matrice trasformazione Sample --> Station
 T_Sample_Station = [ 1 , 0 , 0 , 1 ;...
                    0 , 1 , 0 , 0 ; ...
                    0 , 0 , 1 , -0.25;...
                    0 , 0 , 0 , 1 ];
 
-T_Sample_Station(1:3,1:3) = eul2R(Phi_Sample_Station,'123');                 % matrice di trasformazione sample ---> station
+T_Sample_Station(1:3,1:3) = eul2R(Phi_Sample_Station,'123');                 % matrice rotazione sample ---> station
+
+% matrice di trasformazione Target-->Station
+T_Target_Station = [ 1 , 0 , 0 , 0 ;...
+                   0 , 1 , 0 , 0 ; ...
+                   0 , 0 , 1 , -0.25;...
+                   0 , 0 , 0 , 1 ];
+T_Target_Station(1:3,1:3) = eul2R(Phi_Target_Station,'123');                 % matrice rotazione target ---> station
+
+% matrice di trasformazione Sample ---> Base
 T_Sample_Base = T_Station_Base * T_Sample_Station;
 
+% matrice di trasformazione Target-->Base
+T_Target_Base = T_Station_Base * T_Target_Station;
+
+% vettore posizione Base wrt Sample
 X_Sample_Base = T_Sample_Base(1:3,4);
+% angoli di eulero di Base wrt Sample
 Phi_Sample_Base = R2eul(T_Sample_Base(1:3,1:3),'123');
+
+% vettore posizione Base wrt Target
+X_Target_Base = T_Target_Base(1:3,4);
+% angoli di eulero di Base wrt Target
+Phi_Target_Base = R2eul(T_Target_Base(1:3,1:3),'123');
+
 % j = 1;
 % for i = 1:50
 % q0 = rand(5,1)*pi;
@@ -48,16 +75,56 @@ Phi_Sample_Base = R2eul(T_Sample_Base(1:3,1:3),'123');
 % end
 
 
+% analitical IK Sample 
+[Qn_Sample, info_Sample] = IK_num(IDRA, [X_Sample_Base;Phi_Sample_Base], "123", ...
+    'q0', zeros(5,1), ...
+    'Nstarts', 500, ...
+    'RequireForward', true, ...
+    'DotMin', 0, ...          % no flip (angolo <= 90°)
+    'wPos', 1, 'wOri', 0.2, 'wDot', 0.2, ...
+    'KeepN', 20, ...
+    'MaxFunEvals', 20000);
+Qcand_Sample = info_Sample.bestListQ;   % 20 migliori candidati
 
+disp(Qn_Sample)
+disp(info_Sample.bestResidual)
+disp(info_Sample.bestPosErr)   % metri
+disp(info_Sample.bestOriErr)   % radianti
+
+% analitical IK Target
+[Qn_Target, info_Target] = IK_num(IDRA, [X_Target_Base;Phi_Target_Base], "123", ...
+    'q0', zeros(5,1), ...
+    'Nstarts', 500, ...
+    'RequireForward', true, ...
+    'DotMin', 0, ...          % no flip (angolo <= 90°)
+    'wPos', 1, 'wOri', 0.2, 'wDot', 0.2, ...
+    'KeepN', 20, ...
+    'MaxFunEvals', 20000);
+Qcand_Target = info_Target.bestListQ;   % 20 migliori candidati
+
+disp(Qn_Target)
+disp(info_Target.bestResidual)
+disp(info_Target.bestPosErr)   % metri
+disp(info_Target.bestOriErr)   % radianti
+
+% scelta di configurazione sample e target dai rispettivi 20 migliori
+% candidati (compliance with collision) 
+% LOAD delle configurazioni scelte
+q_Sample = load("q_Sample.mat");
+q_Sample = q_Sample.q_Sample_chosen;
+q_Target = load("q_Target.mat");
+q_Target = q_Target.q_Target_chosen;
 
 %% test function
 % FK
-[T,p] = FK(IDRA,q_val);
-alpha = R2eul(T(1:3,1:3),"123");
-X = [T(1:3,4);alpha];
+[T,p] = FK(IDRA,Qn_Sample);
+alpha1 = R2eul(T(1:3,1:3),"123");
+[T1,p1] = FK(IDRA,Qn_Target);
+alpha2 = R2eul(T1(1:3,1:3),"123");
+%X = [T(1:3,4);alpha];
 % num IK
-[Qn,status] = numerical_IK(IDRA, X, "123",[0;0;0;0;0]);
-[T1,p1] = FK(IDRA,Qn);
+[Qn2,status] = numerical_IK(IDRA, [X_Sample_Base;Phi_Sample_Base], "123",[0;0;0;0;0]);
+[T1,p1] = FK(IDRA,Qn2);
 % num Newton_Euler
 qd_val = [0,0,0,0,0]';
 qdd_val = [0,0,0,0,0]';

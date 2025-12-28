@@ -18,9 +18,11 @@ IDRA = jsondecode(fileread("IDRA.json"));
 
 f_s = 1000; % [Hz] frequenze sensori = aggiornamento nu,mu,errors
 f_u = 100; % [Hz] frequenze aggiornamento M,B,C,G
+f_c = 100; % [Hz] frequenze aggiornamento M,B,C,G
 
-T_s = 1/f_s;
-T_u = 1/f_u;
+T_s = 1/f_s; % [s]
+T_u = 1/f_u; % [s]
+T_c = 1/f_c; % [s]
 % GAINS
 ki = 1; % da sostituire con  gain scelto
 kp = 1; % da sostituire con  gain scelto
