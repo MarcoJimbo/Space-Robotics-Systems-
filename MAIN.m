@@ -19,10 +19,36 @@ T_Station_Base = [ 1 , 0 , 0 , -0.5 ;...
 env = setObstacles(T_Station_Base);
 
 % plot HEILConfiguration
-q_val = [0,-0.5,0,0,0]';
+q_start = [0; -2.4435; 1.5708; 1.5708; 1.5708];
 color = [1 0 0];
-rbt_plot(IDRA,q_val,color,env)
+rbt_plot(IDRA,q_start,color,env)
 title('HEIL IDRA');
+
+%% Inverse Kinematics
+X_sample = [1; 0; -0.25];
+Phi_Sample_Station = deg2rad([0; 90; 0]);
+T_Sample_Station = [ 1 , 0 , 0 , 1 ;...
+                   0 , 1 , 0 , 0 ; ...
+                   0 , 0 , 1 , -0.25;...
+                   0 , 0 , 0 , 1 ];
+
+T_Sample_Station(1:3,1:3) = eul2R(Phi_Sample_Station,'123');                 % matrice di trasformazione sample ---> station
+T_Sample_Base = T_Station_Base * T_Sample_Station;
+
+X_Sample_Base = T_Sample_Base(1:3,4);
+Phi_Sample_Base = R2eul(T_Sample_Base(1:3,1:3),'123');
+% j = 1;
+% for i = 1:50
+% q0 = rand(5,1)*pi;
+% [sol,status] = numerical_IK(IDRA,[X_Sample_Base; Phi_Sample_Base],'123',q0);
+%    if strcmp(status,'success')
+%       q(:,j) = sol;
+%       j = j+1;
+%    end
+% end
+
+
+
 
 %% test function
 % FK

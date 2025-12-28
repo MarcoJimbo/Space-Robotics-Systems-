@@ -11,14 +11,14 @@ function [q,status] = numerical_IK(rbt,X,xyz,q0,varargin)
 % X                 vettore di coordinate cartesiane                       (6x1)
 % q0                first guess                                            (string)
 % xyz               sequenza degli assi di rotazione                       (string)
-% varargin{1}       tolleranza su l'errore (1e-5 di default)               (scalar)
+% varargin{1}       tolleranza su l'errore (1e-3 di default)               (scalar)
 % varargin{2}       numero massimo di iterazioni (500 di default)          (scalar)
 % varargin{3}       numero di smorzamento (0.1 di default)                 (scalar)
 %
 % OUTPUT
 % q                 soluzione numerica della cinematica inversa            (matrix NxM)
 
-tol = 1e-5;
+tol = 1e-3;
 max_iter = 10000;
 k = 0.1;
 n_joints = rbt.joints_number;

@@ -13,7 +13,7 @@ function rbt_plot(rbt,q,varargin)
 
 
 n = rbt.joints_number;
-joint_pos = zeros(n,3);
+pos = zeros(n+1,3);
 T = eye(4);
 color = 'r';
 env = {};
@@ -33,11 +33,13 @@ for i = 1:n
        theta = j.MDH.theta;
     end
     T = T * MDH2tr(theta,d,j.MDH.alpha,j.MDH.a);
-    joint_pos(i,:) = T(1:3,4)';
+    pos(i,:) = T(1:3,4)';
 end
-
+% End Effector
+T = T*MDH2tr(rbt.end_effector.MDH.theta,rbt.end_effector.MDH.d,rbt.end_effector.MDH.alpha,rbt.end_effector.MDH.a);
+pos(end,:) = T(1:3,4)';
 hold on; grid on; axis equal;
-plot3(joint_pos(:,1), joint_pos(:,2), joint_pos(:,3), '-o', 'LineWidth', 2, 'MarkerSize', 6, 'MarkerFaceColor', color,'Color',color);
+plot3(pos(:,1), pos(:,2), pos(:,3), '-o', 'LineWidth', 2, 'MarkerSize', 6, 'MarkerFaceColor', color,'Color',color);
 
 if ~isempty(env), show(env{1}), show(env{2}), end
 
