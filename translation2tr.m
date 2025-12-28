@@ -3,7 +3,7 @@ function [T] = translation2tr(X)
 % when the relation between the two frames is one of pure translation
 %
 % INPUT
-% Translation vector X
+% Translation vector X (it's the position of frame i wrt frame i-1)
 %
 % OUTPUT
 % The transformation matrix from i to i-1
