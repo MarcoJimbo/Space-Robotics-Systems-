@@ -116,8 +116,8 @@ q_Target = load("q_Target.mat");
 q_Target = q_Target.q_Target_chosen;
 
 %% Trajectory generation
-theta = [q_start q_Sample q_Sample q_Sample q_Target q_Target];
-ddtheta_max = ones(5,1) * deg2rad(10);
+theta = [q_start q_Sample q_Sample q_Sample q_Target q_Target q_Target];
+ddtheta_max = ones(5,1) * deg2rad(5);
 dt = allowable_dt(ddtheta_max,theta,1.2);
 [q,dq,ddq,t_b,t_jk] = trapz_traj(theta,dt);
 
