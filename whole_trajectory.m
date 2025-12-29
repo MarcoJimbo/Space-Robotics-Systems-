@@ -1,74 +1,76 @@
-function [q,dq,ddq] = whole_trajectory(theta,dtheta,ddtheta,dt,t_b,t_jk,plt)
+function [q,dq,ddq] = whole_trajectory(theta,dtheta,ddtheta,dt,t_b,t_jk,f_sample,plt)
 % la funzione ricostruisce l'andamento della traiettoria nel tempo
 % assumendo un profilo trapezoidale per la velocità e la plotta
 % INPUT
 %
-% theta              vettore delle coordinate angolari nel tempo           (vettore Nx1)          
-% dtheta             vettore delle velocità nelle fasi lineari             (vettore N-1x1)
-% ddtheta            vettore delle accelerazioni nei tratti parabolici     (vettore Nx1)        
+% theta              matrice delle coordinate angolari nel tempo           (matrice MxN)          
+% dtheta             matrice delle velocità nelle fasi lineari             (matrice MxN-1)
+% ddtheta            matrice delle accelerazioni nei tratti parabolici     (matrice MxN)        
 % dt                 durata dei tratti                                     (scalare)
-% t_b                vettore contenente le durate dei periodi di blend     (vettore Nx1)
-% t_kj               vettore contenente le durate dei periodi lineari      (vettore N-1x1)
+% t_b                matrice contenente le durate dei periodi di blend     (matrice MxN)
+% t_kj               matrice contenente le durate dei periodi lineari      (matrice MxN-1)
+% f_sample           frequenza di campionamento della traiettoria          (scalare)
+% plt                valore logico, se 1 la funzione plotta i risultati
 %
 % OUTPUT
-% q, dq, ddq         vettori di angoli, velocità e accelerazione del giunto
+% q, dq, ddq         matrici di angoli, velocità e accelerazione del giunto
 
 [M,N] = size(theta);
-f_sample = 200;
 dt_sample = 1/f_sample;
 t_end = (N-1)*dt;
-t_vec = 0:dt_sample:t_end;
-
-q = [];
-dq = [];
-ddq = [];
-
-i = 1;
-tic = 0;
-ti_start = 0;
 qb0 = theta(:,1);
 dqb0 = zeros(M,1);
-ql0 = qb0 + dqb0 * t_b(1) + ddtheta(:,1) * t_b(1)^2 * 0.5;
-while tic <= t_end && i < N
-    ti_blend = ti_start + t_b(i);
-    ti_end = ti_start + t_b(i) + t_jk(i);
-    if tic < ti_blend
-        ddqb = ddtheta(:,i);
-        dqb =  dqb0 + ddqb * (tic - ti_start); 
-        qb =  qb0 + dqb0 * (tic - ti_start) + ddqb * (tic - ti_start)^2 * 0.5;
-        q = [q qb];    dq = [dq dqb];   ddq = [ddq ddqb];
-        tic = tic + dt_sample;
-    elseif tic >= ti_blend && tic < ti_end
-        ddql =  zeros(M,1);
-        dql  =  dtheta(:,i);
-        ql =  ql0 + dql * (tic- ti_blend);
-        q = [q ql];    dq = [dq dql];   ddq = [ddq ddql];
-        tic = tic + dt_sample;
-    else
-        qb0  = ql0 + dql * t_jk(i);
-        dqb0 = dtheta(:,i);
-        ql0  = qb0 + dqb0 * t_b(i+1) + ddtheta(:,i+1) * t_b(i+1)^2 * 0.5;
-        i = i+1;
-        ti_start = tic;        
+ql0 = qb0 + dqb0 .* t_b(:,1) + ddtheta(:,1) .* t_b(:,1).^2 * 0.5;
+q = cell(M,1);
+dq = cell(M,1);
+ddq = cell(M,1);
+for j = 1:M
+    i = 1;
+    t_curr = 0;
+    ti_start = 0;
+    while i < N
+        ti_blend = ti_start + t_b(j,i);
+        ti_end = ti_start + t_b(j,i) + t_jk(j,i);
+        if t_curr < ti_blend
+            ddqb = ddtheta(j,i);
+            dqb =  dqb0(j) + ddqb * (t_curr - ti_start); 
+            qb =  qb0(j) + dqb0(j) * (t_curr - ti_start) + ddqb * (t_curr - ti_start)^2 * 0.5;
+            q{j} = [q{j} qb];    dq{j} = [dq{j} dqb];   ddq{j} = [ddq{j} ddqb];
+            t_curr = t_curr + dt_sample;
+        elseif t_curr >= ti_blend && t_curr < ti_end
+            ddql =  0;
+            dql  =  dtheta(j,i);
+            ql =  ql0(j) + dql * (t_curr- ti_blend);
+            q{j} = [q{j} ql];    dq{j} = [dq{j} dql];   ddq{j} = [ddq{j} ddql];
+            t_curr = t_curr + dt_sample;
+        else
+            qb0(j)  = ql0(j) + dql * t_jk(j,i);
+            dqb0(j) = dtheta(j,i);
+            ql0(j)  = qb0(j) + dqb0(j) * t_b(j,i+1) + ddtheta(j,i+1) * t_b(j,i+1)^2 * 0.5;
+            i = i+1;
+            ti_start = t_curr;        
+        end
     end
 end
 % ultimo tratto di blend
-
-while tic < t_end
-ddqb = ddtheta(:,N);
-dqb =  dqb0 + ddqb * (tic - ti_start);                         
-qb =  qb0 + dqb0 * (tic - ti_start) + ddqb * (tic - ti_start).^2 * 0.5;    
-q = [q qb];    dq = [dq dqb];   ddq = [ddq ddqb];
-tic = tic + dt_sample;
+for j = 1:M
+    while t_curr < t_end
+    ddqb = ddtheta(j,N);
+    dqb =  dqb0(j) + ddqb * (t_curr - ti_start);                         
+    qb =  qb0(j) + dqb0(j) * (t_curr - ti_start) + ddqb * (t_curr - ti_start).^2 * 0.5;    
+    q{j} = [q{j} qb];    dq{j} = [dq{j} dqb];   ddq{j} = [ddq{j} ddqb];
+    t_curr = t_curr + dt_sample;
+    end
 end
+t_vec = 0:dt_sample:t_curr;
 if plt
-    for i = 1:size(theta,1)
+    for i = 1:M
         figure(i)
         subplot(1,3,1)
-        plot(t_vec,q(i,:),'r')
+        plot(t_vec(1:end-1),q{i},'r')
         subplot(1,3,2)
-        plot(t_vec,dq(i,:),'b')
+        plot(t_vec(1:end-1),dq{i},'b')
         subplot(1,3,3)
-        plot(t_vec,ddq(i,:),'g') 
+        plot(t_vec(1:end-1),ddq{i},'g') 
     end
 end

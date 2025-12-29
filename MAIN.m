@@ -117,11 +117,10 @@ q_Target = q_Target.q_Target_chosen;
 
 %% Trajectory generation
 theta = [q_start q_Sample q_Sample q_Sample q_Target q_Target q_Target];
-theta = theta(2:end,:);
 ddtheta_max = ones(5,1) * deg2rad(10);
 dt = allowable_dt(ddtheta_max,theta,1.2);
 [q,dq,ddq,t_b,t_jk] = trapz_traj(theta,dt);
-[q_traj,dq_traj,ddq_traj] = whole_trajectory(q,dq,ddq,dt,t_b,t_jk,1);
+[q_traj,dq_traj,ddq_traj] = whole_trajectory(q,dq,ddq,dt,t_b,t_jk,200,1);
 
 
 %% test function
