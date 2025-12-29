@@ -116,12 +116,52 @@ q_Target = load("q_Target.mat");
 q_Target = q_Target.q_Target_chosen;
 
 %% Trajectory generation
-theta = [q_start q_Sample q_Sample q_Sample q_Target q_Target q_Target];
+theta_A = [q_start q_Sample q_Sample q_Sample];
 ddtheta_max = ones(5,1) * deg2rad(10);
-dt = allowable_dt(ddtheta_max,theta,1.2);
-[q,dq,ddq,t_b,t_jk] = trapz_traj(theta,dt);
-[q_traj,dq_traj,ddq_traj] = whole_trajectory(q,dq,ddq,dt,t_b,t_jk,200,1);
+dtA = allowable_dt(ddtheta_max,theta_A,1.2);
+[qA,dqA,ddqA,t_bA,t_jkA] = trapz_traj(theta_A,dtA);
+[q_trajA,dq_trajA,ddq_trajA] = whole_trajectory(qA,dqA,ddqA,dtA,t_bA,t_jkA,200,0);
+q_trajA = cell2mat(q_trajA);
+dq_trajA = cell2mat(dq_trajA);
+ddq_trajA = cell2mat(ddq_trajA);
 
+
+theta_B = [q_Sample q_Target q_Target q_Target];
+dtB = allowable_dt(ddtheta_max,theta_B,1.2);
+[qB,dqB,ddqB,t_bB,t_jkB] = trapz_traj(theta_B,dtB);
+[q_trajB,dq_trajB,ddq_trajB] = whole_trajectory(qB,dqB,ddqB,dtB,t_bB,t_jkB,200,0);
+q_trajB = cell2mat(q_trajB);
+dq_trajB = cell2mat(dq_trajB);
+ddq_trajB = cell2mat(ddq_trajB);
+
+dt_sample = 1/200;
+t_end = dtA * 3 + dtB * 3 + 3*dt_sample;
+t_vec = 0:dt_sample:t_end;
+q_traj = [q_trajA, q_trajB];
+dq_traj = [dq_trajA, dq_trajB];
+ddq_traj = [ddq_trajA, ddq_trajB];
+for i = 1:5
+        figure(i)
+        subplot(1,3,1)
+        plot(t_vec(1:end),rad2deg(q_traj(i,:)),'r')
+        xlabel('t [s]')
+        ylabel('$\theta$ [deg]','Interpreter','latex')
+        subplot(1,3,2)
+        plot(t_vec(1:end),rad2deg(dq_traj(i,:)),'b')
+        xlabel('t [s]')
+        ylabel('$\dot{\theta}$ [deg/s]','Interpreter','latex')
+        subplot(1,3,3)
+        plot(t_vec(1:end),rad2deg(ddq_traj(i,:)),'g') 
+        xlabel('t [s]')
+        ylabel('$\dot{\dot{\theta}}\,[\mathrm{deg/s^{2}}]$','Interpreter','latex')
+end
+
+
+for i = 1:200:length(t_vec)
+    rbt_plot(IDRA,q_traj(:,i),color,env)
+    pause(0.5)
+    clf
+end
 
 %% test function
 % FK

@@ -44,4 +44,4 @@ plot3(pos(:,1), pos(:,2), pos(:,3), '-o', 'LineWidth', 2, 'MarkerSize', 6, 'Mark
 if ~isempty(env), show(env{1}), show(env{2}), end
 
 xlabel('X'); ylabel('Y'); zlabel('Z');
-view(3);
+view([0 0]);

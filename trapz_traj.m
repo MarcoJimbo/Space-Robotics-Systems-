@@ -37,7 +37,7 @@ for i = 2:N-1
     dtheta(:,i) = (theta(:,i+1) - theta(:,i))/dt;
     if ddtheta_max == 0
        ddtheta(:,i) = zeros(M,1);
-       t_b(:,i) = 0;
+       t_b(:,i) = zeros(M,1);        
     else
     ddtheta(:,i) = sign(dtheta(:,i) - dtheta(:,i-1)) .* ddtheta_max;
     t_b(:,i) = (dtheta(:,i) - dtheta(:,i-1))./ddtheta(:,i);

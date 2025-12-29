@@ -67,10 +67,10 @@ if plt
     for i = 1:M
         figure(i)
         subplot(1,3,1)
-        plot(t_vec(1:end-1),q{i},'r')
+        plot(t_vec(1:end),q{i},'r')
         subplot(1,3,2)
-        plot(t_vec(1:end-1),dq{i},'b')
+        plot(t_vec(1:end),dq{i},'b')
         subplot(1,3,3)
-        plot(t_vec(1:end-1),ddq{i},'g') 
+        plot(t_vec(1:end),ddq{i},'g') 
     end
 end
