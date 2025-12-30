@@ -23,21 +23,26 @@ qdd0 = ddq_trajA(2:end,1); % da prendere da generazione traiettoria
 [M_m,A_v,A_c] = motors_effect(IDRA);
 
 % frequenze caratteristiche schema di controllo
+f_s = 100; % [Hz] frequenze sensori = aggiornamento nu,mu,errors
+f_u = 50; % [Hz] frequenze aggiornamento M,B,C,G
+f_c = 50; % [Hz] frequenza del controllore
+f_gt = 200; % [Hz] frequenza generazione della traiettoria
 
-f_s = 150; % [Hz] frequenze sensori = aggiornamento nu,mu,errors
-f_u = 80; % [Hz] frequenze aggiornamento M,B,C,G
-f_c = 80; % [Hz] frequenza del controllore
-f_gt = 200; % [Hz] fraquenza generazione della traiettoria
-
+% sample time blocchi schema di controllo
 T_s = 1/f_s; % [s]
 T_u = 1/f_u; % [s]
 T_c = 1/f_c; % [s]
 T_gt = 1/f_gt; % [s]
 
+% tempo di simulazione
+T_sim = q_trajA(1,end);
+% sample time simulazione
+t_sim = min([T_s,T_u,T_c,T_gt]);
+
 % GAINS
-ki = 1; % da sostituire con  gain scelto
-kp = 1; % da sostituire con  gain scelto
-kd = 1; % da sostituire con  gain scelto
+ki = 5; % da sostituire con  gain scelto
+kp = 10; % da sostituire con  gain scelto
+kd = 5; % da sostituire con  gain scelto
 Ki = eye(IDRA.joints_number) * ki;
 Kp = eye(IDRA.joints_number) * kp;
 Kd = eye(IDRA.joints_number) * kd;

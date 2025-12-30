@@ -141,7 +141,7 @@ q_traj = [q_trajA, q_trajB];
 dq_traj = [dq_trajA, dq_trajB];
 ddq_traj = [ddq_trajA, ddq_trajB];
 for i = 1:5
-        figure(i)
+        figure
         subplot(1,3,1)
         plot(t_vec(1:end),rad2deg(q_traj(i,:)),'r')
         xlabel('t [s]')
@@ -158,6 +158,7 @@ end
 
 
 for i = 1:200:length(t_vec)
+    figure(7)
     rbt_plot(IDRA,q_traj(:,i),color,env)
     pause(0.5)
     clf
