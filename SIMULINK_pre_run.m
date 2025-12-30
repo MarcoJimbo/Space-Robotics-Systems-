@@ -12,12 +12,23 @@ IDRA = jsondecode(fileread("IDRA.json"));
 N_joints = IDRA.joints_number;
 
 % stato iniziale 
+% fase A
 load('q_trajA.mat');
 load('dq_trajA.mat');
 load('ddq_trajA.mat');
-q0 = q_trajA(2:end,1); % da prendere da generazione traiettoria
-qd0 = dq_trajA(2:end,1); % da prendere da generazione traiettoria
-qdd0 = ddq_trajA(2:end,1); % da prendere da generazione traiettoria
+
+q0_A = q_trajA(2:end,1); % da prendere da generazione traiettoria
+qd0_A = dq_trajA(2:end,1); % da prendere da generazione traiettoria
+qdd0_A = ddq_trajA(2:end,1); % da prendere da generazione traiettoria
+
+% fase B
+load('q_trajB.mat');
+load('dq_trajB.mat');
+load('ddq_trajB.mat');
+
+q0_B = q_trajB(2:end,1); % da prendere da generazione traiettoria
+qd0_B = dq_trajB(2:end,1); % da prendere da generazione traiettoria
+qdd0_B = ddq_trajB(2:end,1); % da prendere da generazione traiettoria
 
 % quantità dinamiche attrito
 [M_m,A_v,A_c] = motors_effect(IDRA);
@@ -35,7 +46,13 @@ T_c = 1/f_c; % [s]
 T_gt = 1/f_gt; % [s]
 
 % tempo di simulazione
-T_sim = q_trajA(1,end);
+% fase A
+T_in_sim_A = q_trajA(1,1);
+T_sim_A = q_trajA(1,end);
+% fase B
+T_in_sim_B = q_trajB(1,1);
+T_sim_B = q_trajB(1,end);
+
 % sample time simulazione
 t_sim = min([T_s,T_u,T_c,T_gt]);
 
