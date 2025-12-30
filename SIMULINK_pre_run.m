@@ -8,32 +8,21 @@ IDRA = jsondecode(fileread("IDRA.json"));
 
 %% parametri necessari al run
  
-% numero joint
-N_joints = IDRA.joints_number;
-
 % stato iniziale 
-load('q_trajA.mat');
-load('dq_trajA.mat');
-load('ddq_trajA.mat');
-q0 = q_trajA(2:end,1); % da prendere da generazione traiettoria
-qd0 = dq_trajA(2:end,1); % da prendere da generazione traiettoria
-qdd0 = ddq_trajA(2:end,1); % da prendere da generazione traiettoria
 
-% quantità dinamiche attrito
-[M_m,A_v,A_c] = motors_effect(IDRA);
+ q0 = []; % da prendere da generazione traiettoria
+ qd0 = []; % da prendere da generazione traiettoria
+ qdd0 = []; % da prendere da generazione traiettoria
 
 % frequenze caratteristiche schema di controllo
 
-f_s = 150; % [Hz] frequenze sensori = aggiornamento nu,mu,errors
-f_u = 80; % [Hz] frequenze aggiornamento M,B,C,G
-f_c = 80; % [Hz] frequenza del controllore
-f_gt = 200; % [Hz] fraquenza generazione della traiettoria
+f_s = 1000; % [Hz] frequenze sensori = aggiornamento nu,mu,errors
+f_u = 100; % [Hz] frequenze aggiornamento M,B,C,G
+f_c = 100; % [Hz] frequenze aggiornamento M,B,C,G
 
 T_s = 1/f_s; % [s]
 T_u = 1/f_u; % [s]
 T_c = 1/f_c; % [s]
-T_gt = 1/f_gt; % [s]
-
 % GAINS
 ki = 1; % da sostituire con  gain scelto
 kp = 1; % da sostituire con  gain scelto
