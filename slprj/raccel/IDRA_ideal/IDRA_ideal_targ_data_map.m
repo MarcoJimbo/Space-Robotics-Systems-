@@ -63,15 +63,15 @@
                     section.data(8).logicalSrcIdx = 7;
                     section.data(8).dtTransOffset = 131;
 
-                    ;% rtP.q0
+                    ;% rtP.q0_A
                     section.data(9).logicalSrcIdx = 8;
                     section.data(9).dtTransOffset = 132;
 
-                    ;% rtP.qd0
+                    ;% rtP.qd0_A
                     section.data(10).logicalSrcIdx = 9;
                     section.data(10).dtTransOffset = 137;
 
-                    ;% rtP.qdd0
+                    ;% rtP.qdd0_A
                     section.data(11).logicalSrcIdx = 10;
                     section.data(11).dtTransOffset = 142;
 
@@ -438,8 +438,8 @@
     ;%
 
 
-    targMap.checksum0 = 2624506088;
-    targMap.checksum1 = 39809261;
-    targMap.checksum2 = 342434669;
-    targMap.checksum3 = 38444553;
+    targMap.checksum0 = 2353055895;
+    targMap.checksum1 = 1415182951;
+    targMap.checksum2 = 3446936850;
+    targMap.checksum3 = 2809823770;
 

@@ -23,7 +23,7 @@ function[M_m,A_v,A_c] = motors_effect(rbt)
     for i = 1:n_joints
         M_m(i,i) = rbt.joints(i).DC_motor.I * (rbt.joints(i).DC_motor.gear_ratio)^2;
         A_v(i,i) = (rbt.joints(i).DC_motor.gear_ratio)^2 * rbt.joints(i).DC_motor.b;
-        A_c(i) = (rbt.joints(i).DC_motor.gear_ratio)^2 * rbt.joints(i).DC_motor.tc;
+        A_c(i) = (rbt.joints(i).DC_motor.gear_ratio) * rbt.joints(i).DC_motor.tc;
     end
 
 end

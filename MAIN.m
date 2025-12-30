@@ -164,6 +164,16 @@ for i = 1:200:length(t_vec)
     clf
 end
 
+% metto prima riga della traiettoria = vettore dei tempi
+% fase A
+q_trajA = [ t_vec(1:size(q_trajA,2)) ; q_trajA ];
+dq_trajA = [ t_vec(1:size(dq_trajA,2)) ; dq_trajA ];
+ddq_trajA = [ t_vec(1:size(ddq_trajA,2)) ; ddq_trajA ];
+% fase B
+q_trajB = [ t_vec(size(q_trajA,2)+1:end) ; q_trajB ];
+dq_trajB = [ t_vec(size(dq_trajA,2)+1:end) ; dq_trajB ];
+ddq_trajB = [ t_vec(size(ddq_trajA,2)+1:end) ; ddq_trajB ];
+
 %% test function
 % FK
 [T,p] = FK(IDRA,Qn_Sample);

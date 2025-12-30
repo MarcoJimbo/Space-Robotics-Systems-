@@ -21,9 +21,11 @@ dtheta = zeros(M,N-1);
 ddtheta = zeros(M,N);
 t_b = zeros(M,N);
 t_jk = zeros(M,N-1);
+EPS = 1e-10;
+
 % primo tratto
 ddtheta_max = 4 * abs(theta(:,2) - theta(:,1)) / dt^2;
-if ddtheta_max == 0
+if ddtheta_max <= EPS
    ddtheta(:,1) = zeros(M,1);
    t_b(:,1) = 0;
 else
@@ -35,7 +37,7 @@ dtheta(:,1) = (theta(:,2) - theta(:,1))./(dt - 0.5*t_b(:,1));
 for i = 2:N-1
     ddtheta_max = 4 * abs(theta(:,i) - theta(:,i-1)) / dt^2;
     dtheta(:,i) = (theta(:,i+1) - theta(:,i))/dt;
-    if ddtheta_max == 0
+    if ddtheta_max <= EPS
        ddtheta(:,i) = zeros(M,1);
        t_b(:,i) = zeros(M,1);        
     else
@@ -45,7 +47,7 @@ for i = 2:N-1
 end
 % ultimo tratto
 ddtheta_max = 4 * abs(theta(:,N) - theta(:,N-1)) / dt^2;
-if ddtheta_max == 0
+if ddtheta_max <= EPS
    ddtheta(:,N) = zeros(M,1);
    t_b(:,N) = zeros(M,1);
 else

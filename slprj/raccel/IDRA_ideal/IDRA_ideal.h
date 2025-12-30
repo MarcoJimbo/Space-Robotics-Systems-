@@ -72,8 +72,8 @@ nhcknjm5ka [ 5 ] ; real_T ch55w1wg03 [ 5 ] ; } XDot ; typedef struct {
 boolean_T nhcknjm5ka [ 5 ] ; boolean_T ch55w1wg03 [ 5 ] ; } XDis ; typedef
 struct { rtwCAPI_ModelMappingInfo mmi ; } DataMapInfo ; struct P_ { real_T
 A_c [ 5 ] ; real_T A_v [ 25 ] ; real_T DELTA ; real_T Kd [ 25 ] ; real_T Ki [
-25 ] ; real_T Kp [ 25 ] ; real_T M_m [ 25 ] ; real_T T_s ; real_T q0 [ 5 ] ;
-real_T qd0 [ 5 ] ; real_T qdd0 [ 5 ] ; real_T t_const ; real_T
+25 ] ; real_T Kp [ 25 ] ; real_T M_m [ 25 ] ; real_T T_s ; real_T q0_A [ 5 ]
+; real_T qd0_A [ 5 ] ; real_T qdd0_A [ 5 ] ; real_T t_const ; real_T
 integrateerr_gainval ; real_T integrateerr_IC ; } ; extern const char_T *
 RT_MEMORY_ALLOCATION_ERROR ; extern B rtB ; extern X rtX ; extern DW rtDW ;
 extern P rtP ; extern mxArray * mr_IDRA_ideal_GetDWork ( ) ; extern void
