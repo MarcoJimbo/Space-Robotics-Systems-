@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   8 \
+    NumChartData   6 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -32,7 +32,7 @@
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "IDRA_ideal:18:698-704"\
+      SrcLocation  "IDRA_ideal:18:535-541"\
       Dimensions   [5]\
     }\
     ChartData {\
@@ -40,36 +40,21 @@
       Description  "EmlPersistentSentinel"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "IDRA_ideal:18:698-704"\
-    }\
-    ChartData {\
-      Name         "y_prev"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "IDRA_ideal:18:705-711"\
-      Dimensions   [5]\
-    }\
-    ChartData {\
-      Name         "y_prev_not_empty"\
-      Description  "EmlPersistentSentinel"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "IDRA_ideal:18:705-711"\
+      SrcLocation  "IDRA_ideal:18:535-541"\
     }\
     ChartData {\
       Name         "is_init"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "IDRA_ideal:18:712-719"\
+      SrcLocation  "IDRA_ideal:18:542-549"\
     }\
     ChartData {\
       Name         "is_init_not_empty"\
       Description  "EmlPersistentSentinel"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "IDRA_ideal:18:712-719"\
+      SrcLocation  "IDRA_ideal:18:542-549"\
     }\
   }
   %return ChartDataElements
