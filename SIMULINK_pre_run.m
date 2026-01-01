@@ -67,4 +67,4 @@ Kd = eye(IDRA.joints_number) * kd;
 % parametri quantizzazione 
 steps_encoder = 4096;
 DELTA = 2*pi / steps_encoder; % [rad] step angolare quantizzazione encoder
-t_const = 2e-2;
+t_const = 2e-1;
