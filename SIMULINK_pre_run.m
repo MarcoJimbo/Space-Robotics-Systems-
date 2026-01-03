@@ -53,6 +53,7 @@ T_moto_A = 9.56; % [s]
 % fase B
 T_in_sim_B = q_trajB(1,1);
 T_sim_B = q_trajB(1,end);
+T_moto_B = 34.085; % [s]
 
 % sample time simulazione
 t_sim = min([T_s,T_u,T_c,T_gt]);
