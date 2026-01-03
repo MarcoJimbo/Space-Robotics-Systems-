@@ -67,4 +67,9 @@ Kd = eye(IDRA.joints_number) * kd;
 % parametri quantizzazione 
 steps_encoder = 4096;
 DELTA = 2*pi / steps_encoder; % [rad] step angolare quantizzazione encoder
-t_const = 2e-1;
+
+% parametri differenziazione
+K = 5; % numero di misure utilizzate per ricostruzione velocità
+t_LPF = 10; % [s] durata tempo LPF
+t_fade = 0.5; % [s] durata fade da LPF a raw
+t_const = 2e-2;

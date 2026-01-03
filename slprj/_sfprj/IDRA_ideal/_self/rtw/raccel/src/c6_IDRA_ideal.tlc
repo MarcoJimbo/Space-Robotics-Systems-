@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   6 \
+    NumChartData   14 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -28,33 +28,91 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "q_prev"\
+      Name         "q_prev_wrap"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "IDRA_ideal:50:66-72"\
+      SrcLocation  "IDRA_ideal:50:466-477"\
       Dimensions   [5]\
     }\
     ChartData {\
-      Name         "q_prev_not_empty"\
+      Name         "q_prev_wrap_not_empty"\
       Description  "EmlPersistentSentinel"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "IDRA_ideal:50:66-72"\
+      SrcLocation  "IDRA_ideal:50:466-477"\
+    }\
+    ChartData {\
+      Name         "u_prev"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "IDRA_ideal:50:478-484"\
+      Dimensions   [5]\
+    }\
+    ChartData {\
+      Name         "u_prev_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "IDRA_ideal:50:478-484"\
+    }\
+    ChartData {\
+      Name         "u_hist"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "IDRA_ideal:50:485-491"\
+    }\
+    ChartData {\
+      Name         "u_hist_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "IDRA_ideal:50:485-491"\
+    }\
+    ChartData {\
+      Name         "y_prev"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "IDRA_ideal:50:492-498"\
+      Dimensions   [5]\
+    }\
+    ChartData {\
+      Name         "y_prev_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "IDRA_ideal:50:492-498"\
+    }\
+    ChartData {\
+      Name         "K_prev"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "IDRA_ideal:50:499-505"\
+    }\
+    ChartData {\
+      Name         "K_prev_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "IDRA_ideal:50:499-505"\
     }\
     ChartData {\
       Name         "is_init"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "IDRA_ideal:50:73-80"\
+      SrcLocation  "IDRA_ideal:50:506-513"\
     }\
     ChartData {\
       Name         "is_init_not_empty"\
       Description  "EmlPersistentSentinel"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "IDRA_ideal:50:73-80"\
+      SrcLocation  "IDRA_ideal:50:506-513"\
     }\
   }
   %return ChartDataElements

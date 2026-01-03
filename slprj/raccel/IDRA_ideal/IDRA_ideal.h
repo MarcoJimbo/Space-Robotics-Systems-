@@ -22,6 +22,7 @@
 #include "math.h"
 #include "dt_info.h"
 #include "ext_work.h"
+#include "blas.h"
 #endif
 #include "IDRA_ideal_types.h"
 #include "rtw_modelmap_simtarget.h"
@@ -31,7 +32,7 @@
 #define NSAMPLE_TIMES (5) 
 #define NINPUTS (0)       
 #define NOUTPUTS (0)     
-#define NBLOCKIO (25) 
+#define NBLOCKIO (26) 
 #define NUM_ZC_EVENTS (0) 
 #ifndef NCSTATES
 #define NCSTATES (10)   
@@ -46,40 +47,43 @@
 #endif
 #ifndef IN_RACCEL_MAIN
 #endif
-typedef struct { real_T duhcegxiww [ 5 ] ; real_T fa5pa5xss3 [ 5 ] ; real_T
-dfgp2cfok2 [ 5 ] ; real_T m0zpelvx4c [ 5 ] ; real_T iaqh5zb44n [ 5 ] ; real_T
-ayze2qgrmj [ 5 ] ; real_T ml11i2hghx [ 5 ] ; real_T ikueevaqcu [ 10 ] ;
-real_T jbqnkbo01d [ 5 ] ; real_T kd1lrgsfm5 [ 5 ] ; real_T b3q0dwdslb [ 5 ] ;
-real_T gm5u2wszg5 [ 5 ] ; real_T bzl0ko0cuy [ 25 ] ; real_T ovthouobfc [ 50 ]
-; real_T jym5i5fv03 [ 25 ] ; real_T gz4je3xrs2 [ 5 ] ; real_T be34bt2ox5 [ 5
-] ; real_T faqro4qsbw [ 5 ] ; } B ; typedef struct { real_T mznpziqilf [ 5 ]
-; real_T emznpnkn2r [ 5 ] ; real_T jg2qg2rcva [ 5 ] ; struct { void *
-LoggedData ; } g31n03pmgo ; struct { void * LoggedData ; } nzs4hn2gu1 ;
-struct { void * PrevTimePtr ; } g1iyzdoa4d ; struct { void * LoggedData ; }
-nrp5wjsdhp ; struct { void * PrevTimePtr ; } houxtxsdbs ; struct { void *
-LoggedData ; } pnnv13nchn ; struct { void * AQHandles ; } kdjze5zyat ; struct
-{ void * AQHandles ; } omeeantnzf ; struct { void * PrevTimePtr ; }
-kv5cshr4pr ; struct { void * AQHandles ; } mfwodyrjey ; struct { void *
-LoggedData ; } njtg3wlgpq ; struct { void * LoggedData ; } cgspc25xxu ;
-int32_T h3vk22mn5c ; int32_T lcwydbxwp2 ; int32_T cvrmw0cqs3 ; int32_T
-nzif0s4jqa ; int32_T anwyxd3iti ; int32_T als1agj0yy ; int32_T dwmuy0hq5e ;
-int32_T gba44xx4sm ; boolean_T lbfl044rgi ; boolean_T mldbalci1x ; boolean_T
-hratggtsdz ; boolean_T bbvckms0db ; boolean_T bgwce04xfh ; boolean_T
-n304r1ooyz ; boolean_T awv43ptary ; boolean_T pi3hfzhk3f ; boolean_T
-ifo4yq0zyg ; boolean_T au2zeyz4gc ; boolean_T lhpd5viobv ; boolean_T
-i4kxhu0aka ; boolean_T isgdpunkdd ; boolean_T i3at1auhld ; } DW ; typedef
-struct { real_T nhcknjm5ka [ 5 ] ; real_T ch55w1wg03 [ 5 ] ; } X ; typedef
-struct { real_T nhcknjm5ka [ 5 ] ; real_T ch55w1wg03 [ 5 ] ; } XDot ; typedef
-struct { boolean_T nhcknjm5ka [ 5 ] ; boolean_T ch55w1wg03 [ 5 ] ; } XDis ;
-typedef struct { rtwCAPI_ModelMappingInfo mmi ; } DataMapInfo ; struct P_ {
-real_T A_c [ 5 ] ; real_T A_v [ 25 ] ; real_T DELTA ; real_T Kd [ 25 ] ;
-real_T Ki [ 25 ] ; real_T Kp [ 25 ] ; real_T M_m [ 25 ] ; real_T T_s ; real_T
-q0_A [ 5 ] ; real_T qd0_A [ 5 ] ; real_T qdd0_A [ 5 ] ; real_T
-integrateerr_gainval ; real_T integrateerr_IC ; } ; extern const char_T *
-RT_MEMORY_ALLOCATION_ERROR ; extern B rtB ; extern X rtX ; extern DW rtDW ;
-extern P rtP ; extern mxArray * mr_IDRA_ideal_GetDWork ( ) ; extern void
-mr_IDRA_ideal_SetDWork ( const mxArray * ssDW ) ; extern mxArray *
-mr_IDRA_ideal_GetSimStateDisallowedBlocks ( ) ; extern const
+typedef struct { real_T duhcegxiww [ 5 ] ; real_T lhkkowo0nn ; real_T
+fa5pa5xss3 [ 5 ] ; real_T dfgp2cfok2 [ 5 ] ; real_T m0zpelvx4c [ 5 ] ; real_T
+iaqh5zb44n [ 5 ] ; real_T ayze2qgrmj [ 5 ] ; real_T ml11i2hghx [ 5 ] ; real_T
+ikueevaqcu [ 10 ] ; real_T jbqnkbo01d [ 5 ] ; real_T kd1lrgsfm5 [ 5 ] ;
+real_T b3q0dwdslb [ 5 ] ; real_T gm5u2wszg5 [ 5 ] ; real_T bzl0ko0cuy [ 25 ]
+; real_T ovthouobfc [ 50 ] ; real_T jym5i5fv03 [ 25 ] ; real_T gz4je3xrs2 [ 5
+] ; real_T be34bt2ox5 [ 5 ] ; real_T faqro4qsbw [ 5 ] ; } B ; typedef struct
+{ kxg4oc5jml * mi3zr05m4m ; real_T mznpziqilf [ 5 ] ; real_T emznpnkn2r [ 5 ]
+; real_T etkg31qada [ 5 ] ; real_T pb2ntxenga [ 5 ] ; real_T piesobdo33 [ 5 ]
+; real_T lezbekocq5 ; struct { void * LoggedData ; } g31n03pmgo ; struct {
+void * LoggedData ; } nzs4hn2gu1 ; struct { void * PrevTimePtr ; } g1iyzdoa4d
+; struct { void * LoggedData ; } nrp5wjsdhp ; struct { void * PrevTimePtr ; }
+houxtxsdbs ; struct { void * LoggedData ; } pnnv13nchn ; struct { void *
+AQHandles ; } kdjze5zyat ; struct { void * AQHandles ; } omeeantnzf ; struct
+{ void * PrevTimePtr ; } kv5cshr4pr ; struct { void * AQHandles ; }
+mfwodyrjey ; struct { void * LoggedData ; } njtg3wlgpq ; struct { void *
+LoggedData ; } cgspc25xxu ; int32_T h3vk22mn5c ; int32_T lcwydbxwp2 ; int32_T
+cvrmw0cqs3 ; int32_T nzif0s4jqa ; int32_T anwyxd3iti ; int32_T als1agj0yy ;
+int32_T dwmuy0hq5e ; int32_T gba44xx4sm ; boolean_T lbfl044rgi ; boolean_T
+mldbalci1x ; boolean_T hratggtsdz ; boolean_T bbvckms0db ; boolean_T
+bgwce04xfh ; boolean_T n304r1ooyz ; boolean_T g040bpnhdc ; boolean_T
+kocgo44ina ; boolean_T gmw3hy3son ; boolean_T eqonurh4qc ; boolean_T
+ia4rs3qk4c ; boolean_T dkjmicunwo ; boolean_T fpbdm0p31c ; boolean_T
+au2zeyz4gc ; boolean_T lhpd5viobv ; boolean_T i4kxhu0aka ; boolean_T
+isgdpunkdd ; boolean_T i3at1auhld ; } DW ; typedef struct { real_T nhcknjm5ka
+[ 5 ] ; real_T ch55w1wg03 [ 5 ] ; } X ; typedef struct { real_T nhcknjm5ka [
+5 ] ; real_T ch55w1wg03 [ 5 ] ; } XDot ; typedef struct { boolean_T
+nhcknjm5ka [ 5 ] ; boolean_T ch55w1wg03 [ 5 ] ; } XDis ; typedef struct {
+rtwCAPI_ModelMappingInfo mmi ; } DataMapInfo ; struct P_ { real_T A_c [ 5 ] ;
+real_T A_v [ 25 ] ; real_T DELTA ; real_T K ; real_T Kd [ 25 ] ; real_T Ki [
+25 ] ; real_T Kp [ 25 ] ; real_T M_m [ 25 ] ; real_T T_s ; real_T q0_A [ 5 ]
+; real_T qd0_A [ 5 ] ; real_T qdd0_A [ 5 ] ; real_T t_LPF ; real_T t_const ;
+real_T t_fade ; real_T integrateerr_gainval ; real_T integrateerr_IC ; } ;
+extern const char_T * RT_MEMORY_ALLOCATION_ERROR ; extern B rtB ; extern X
+rtX ; extern DW rtDW ; extern P rtP ; extern mxArray * mr_IDRA_ideal_GetDWork
+( ) ; extern void mr_IDRA_ideal_SetDWork ( const mxArray * ssDW ) ; extern
+mxArray * mr_IDRA_ideal_GetSimStateDisallowedBlocks ( ) ; extern const
 rtwCAPI_ModelMappingStaticInfo * IDRA_ideal_GetCAPIStaticMap ( void ) ;
 extern SimStruct * const rtS ; extern DataMapInfo * rt_dataMapInfoPtr ;
 extern rtwCAPI_ModelMappingInfo * rt_modelMapInfoPtr ; void MdlOutputs ( int_T

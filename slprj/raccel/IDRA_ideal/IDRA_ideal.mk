@@ -107,7 +107,7 @@ INTERLEAVED_COMPLEX_FLAGS = -R2018a
 DEFINES_CUSTOM          = -DEXT_MODE -DIS_RAPID_ACCEL 
 DEFINES_OTHER           = -DHAVESTDIO
 COMPILE_FLAGS_OTHER     = 
-SYSTEM_LIBS             = /LIBPATH:"C:\Program Files\MATLAB\R2024b\extern\lib\win64\microsoft" libmwipp.lib libut.lib libmx.lib libmex.lib libmat.lib libmwmathutil.lib libmwslsa_engine.lib libmwslexec_simbridge.lib libmwsl_fileio.lib libmwsigstream.lib libmwsl_AsyncioQueue.lib libmwsl_services.lib libmwsdi_raccel.lib libmwcoder_target_services.lib libmwcoder_ParamTuningTgtAppSvc.lib libmwslpointerutil.lib libmwfoundation_i18n_init_c_api.lib libmwsl_simtarget_instrumentation.lib libfixedpoint.lib libmwslexec_simlog.lib libmwstringutil.lib
+SYSTEM_LIBS             = /LIBPATH:"C:\Program Files\MATLAB\R2024b\extern\lib\win64\microsoft" libmwblas.lib libmwipp.lib libut.lib libmx.lib libmex.lib libmat.lib libmwmathutil.lib libmwslsa_engine.lib libmwslexec_simbridge.lib libmwsl_fileio.lib libmwsigstream.lib libmwsl_AsyncioQueue.lib libmwsl_services.lib libmwsdi_raccel.lib libmwcoder_target_services.lib libmwcoder_ParamTuningTgtAppSvc.lib libmwslpointerutil.lib libmwfoundation_i18n_init_c_api.lib libmwsl_simtarget_instrumentation.lib libfixedpoint.lib libmwslexec_simlog.lib libmwstringutil.lib
 MODEL_HAS_DYNAMICALLY_LOADED_SFCNS = 0
 
 # To enable debugging:

@@ -7,10 +7,10 @@
 #define TARGET_CONST
 #define TARGET_STRING(s) (s)
 #ifndef SS_UINT64
-#define SS_UINT64 17
+#define SS_UINT64 18
 #endif
 #ifndef SS_INT64
-#define SS_INT64 18
+#define SS_INT64 19
 #endif
 #else
 #include "builtin_typeid_types.h"
@@ -25,20 +25,21 @@
 #define TARGET_STRING(s)               (s)
 #endif
 #endif
-static const rtwCAPI_Signals rtBlockSignals [ ] = { { 0 , 1 , TARGET_STRING ( "IDRA_ideal/MATLAB Function" ) , TARGET_STRING ( "qdd_true" ) , 0 , 0 , 0 , 0 , 0 } , { 1 , 4 , TARGET_STRING ( "IDRA_ideal/MATLAB Function3" ) , TARGET_STRING ( "tau" ) , 0 , 0 , 0 , 0 , 1 } , { 2 , 5 , TARGET_STRING ( "IDRA_ideal/MATLAB Function4" ) , TARGET_STRING ( "" ) , 0 , 0 , 1 , 0 , 1 } , { 3 , 5 , TARGET_STRING ( "IDRA_ideal/MATLAB Function4" ) , TARGET_STRING ( "" ) , 1 , 0 , 2 , 0 , 1 } , { 4 , 5 , TARGET_STRING ( "IDRA_ideal/MATLAB Function4" ) , TARGET_STRING ( "" ) , 2 , 0 , 1 , 0 , 1 } , { 5 , 5 , TARGET_STRING ( "IDRA_ideal/MATLAB Function4" ) , TARGET_STRING ( "" ) , 3 , 0 , 0 , 0 , 1 } , { 6 , 6 , TARGET_STRING ( "IDRA_ideal/MATLAB Function5" ) , TARGET_STRING ( "qd_meas" ) , 0 , 0 , 0 , 0 , 2 } , { 7 , 7 , TARGET_STRING ( "IDRA_ideal/MATLAB Function6" ) , TARGET_STRING ( "q_meas" ) , 0 , 0 , 0 , 0 , 2 } , { 8 , 8 , TARGET_STRING ( "IDRA_ideal/MATLAB Function7" ) , TARGET_STRING ( "" ) , 0 , 0 , 3 , 0 , 2 } , { 9 , 8 , TARGET_STRING ( "IDRA_ideal/MATLAB Function7" ) , TARGET_STRING ( "" ) , 1 , 0 , 0 , 0 , 2 } , { 10 , 8 , TARGET_STRING ( "IDRA_ideal/MATLAB Function7" ) , TARGET_STRING ( "" ) , 2 , 0 , 0 , 0 , 2 } , { 11 , 0 , TARGET_STRING ( "IDRA_ideal/From File" ) , TARGET_STRING ( "" ) , 0 , 0 , 4 , 0 , 3 } , { 12 , 0 , TARGET_STRING ( "IDRA_ideal/From File1" ) , TARGET_STRING ( "" ) , 0 , 0 , 4 , 0 , 3 } , { 13 , 0 , TARGET_STRING ( "IDRA_ideal/Gain2" ) , TARGET_STRING ( "ki*err_i" ) , 0 , 0 , 4 , 0 , 2 } , { 14 , 0 , TARGET_STRING ( "IDRA_ideal/integrate qdd" ) , TARGET_STRING ( "qd_true" ) , 0 , 0 , 0 , 0 , 0 } , { 15 , 0 , TARGET_STRING ( "IDRA_ideal/Add" ) , TARGET_STRING ( "tau_p" ) , 0 , 0 , 4 , 0 , 3 } , { 16 , 0 , TARGET_STRING ( "IDRA_ideal/Add1" ) , TARGET_STRING ( "" ) , 0 , 0 , 0 , 0 , 0 } , { 17 , 0 , TARGET_STRING ( "IDRA_ideal/Subtract1" ) , TARGET_STRING ( "" ) , 0 , 0 , 0 , 0 , 3 } , { 0 , 0 , ( NULL ) , ( NULL ) , 0 , 0 , 0 , 0 , 0 } } ; static const rtwCAPI_BlockParameters rtBlockParameters [ ] = { { 18 , TARGET_STRING ( "IDRA_ideal/integrate err" ) , TARGET_STRING ( "gainval" ) , 0 , 5 , 0 } , { 19 , TARGET_STRING ( "IDRA_ideal/integrate err" ) , TARGET_STRING ( "InitialCondition" ) , 0 , 5 , 0 } , { 0 , ( NULL ) , ( NULL ) , 0 , 0 , 0 } } ; static int_T rt_LoggedStateIdxList [ ] = { - 1 } ; static const rtwCAPI_Signals rtRootInputs [ ] = { { 0 , 0 , ( NULL ) , ( NULL ) , 0 , 0 , 0 , 0 , 0 } } ; static const rtwCAPI_Signals rtRootOutputs [ ] = { { 0 , 0 , ( NULL ) , ( NULL ) , 0 , 0 , 0 , 0 , 0 } } ; static const rtwCAPI_ModelParameters rtModelParameters [ ] = { { 20 , TARGET_STRING ( "A_c" ) , 0 , 4 , 0 } , { 21 , TARGET_STRING ( "A_v" ) , 0 , 1 , 0 } , { 22 , TARGET_STRING ( "DELTA" ) , 0 , 5 , 0 } , { 23 , TARGET_STRING ( "Kd" ) , 0 , 1 , 0 } , { 24 , TARGET_STRING ( "Ki" ) , 0 , 1 , 0 } , { 25 , TARGET_STRING ( "Kp" ) , 0 , 1 , 0 } , { 26 , TARGET_STRING ( "M_m" ) , 0 , 1 , 0 } , { 27 , TARGET_STRING ( "T_s" ) , 0 , 5 , 0 } , { 28 , TARGET_STRING ( "q0_A" ) , 0 , 4 , 0 } , { 29 , TARGET_STRING ( "qd0_A" ) , 0 , 4 , 0 } , { 30 , TARGET_STRING ( "qdd0_A" ) , 0 , 4 , 0 } , { 0 , ( NULL ) , 0 , 0 , 0 } } ;
+static const rtwCAPI_Signals rtBlockSignals [ ] = { { 0 , 1 , TARGET_STRING ( "IDRA_ideal/MATLAB Function" ) , TARGET_STRING ( "qdd_true" ) , 0 , 0 , 0 , 0 , 0 } , { 1 , 4 , TARGET_STRING ( "IDRA_ideal/MATLAB Function3" ) , TARGET_STRING ( "tau" ) , 0 , 0 , 0 , 0 , 1 } , { 2 , 5 , TARGET_STRING ( "IDRA_ideal/MATLAB Function4" ) , TARGET_STRING ( "" ) , 0 , 0 , 1 , 0 , 1 } , { 3 , 5 , TARGET_STRING ( "IDRA_ideal/MATLAB Function4" ) , TARGET_STRING ( "" ) , 1 , 0 , 2 , 0 , 1 } , { 4 , 5 , TARGET_STRING ( "IDRA_ideal/MATLAB Function4" ) , TARGET_STRING ( "" ) , 2 , 0 , 1 , 0 , 1 } , { 5 , 5 , TARGET_STRING ( "IDRA_ideal/MATLAB Function4" ) , TARGET_STRING ( "" ) , 3 , 0 , 0 , 0 , 1 } , { 6 , 6 , TARGET_STRING ( "IDRA_ideal/MATLAB Function5" ) , TARGET_STRING ( "qd_meas" ) , 0 , 0 , 0 , 0 , 2 } , { 7 , 7 , TARGET_STRING ( "IDRA_ideal/MATLAB Function6" ) , TARGET_STRING ( "" ) , 0 , 0 , 0 , 0 , 2 } , { 8 , 8 , TARGET_STRING ( "IDRA_ideal/MATLAB Function7" ) , TARGET_STRING ( "" ) , 0 , 0 , 3 , 0 , 2 } , { 9 , 8 , TARGET_STRING ( "IDRA_ideal/MATLAB Function7" ) , TARGET_STRING ( "" ) , 1 , 0 , 0 , 0 , 2 } , { 10 , 8 , TARGET_STRING ( "IDRA_ideal/MATLAB Function7" ) , TARGET_STRING ( "" ) , 2 , 0 , 0 , 0 , 2 } , { 11 , 0 , TARGET_STRING ( "IDRA_ideal/Clock" ) , TARGET_STRING ( "" ) , 0 , 0 , 4 , 0 , 0 } , { 12 , 0 , TARGET_STRING ( "IDRA_ideal/From File" ) , TARGET_STRING ( "" ) , 0 , 0 , 5 , 0 , 3 } , { 13 , 0 , TARGET_STRING ( "IDRA_ideal/From File1" ) , TARGET_STRING ( "" ) , 0 , 0 , 5 , 0 , 3 } , { 14 , 0 , TARGET_STRING ( "IDRA_ideal/Gain2" ) , TARGET_STRING ( "ki*err_i" ) , 0 , 0 , 5 , 0 , 2 } , { 15 , 0 , TARGET_STRING ( "IDRA_ideal/integrate qdd" ) , TARGET_STRING ( "qd_true" ) , 0 , 0 , 0 , 0 , 0 } , { 16 , 0 , TARGET_STRING ( "IDRA_ideal/Add" ) , TARGET_STRING ( "tau_p" ) , 0 , 0 , 5 , 0 , 3 } , { 17 , 0 , TARGET_STRING ( "IDRA_ideal/Add1" ) , TARGET_STRING ( "" ) , 0 , 0 , 0 , 0 , 0 } , { 18 , 0 , TARGET_STRING ( "IDRA_ideal/Subtract1" ) , TARGET_STRING ( "" ) , 0 , 0 , 0 , 0 , 3 } , { 0 , 0 , ( NULL ) , ( NULL ) , 0 , 0 , 0 , 0 , 0 } } ; static const rtwCAPI_BlockParameters rtBlockParameters [ ] = { { 19 , TARGET_STRING ( "IDRA_ideal/integrate err" ) , TARGET_STRING ( "gainval" ) , 0 , 4 , 0 } , { 20 , TARGET_STRING ( "IDRA_ideal/integrate err" ) , TARGET_STRING ( "InitialCondition" ) , 0 , 4 , 0 } , { 0 , ( NULL ) , ( NULL ) , 0 , 0 , 0 } } ; static int_T rt_LoggedStateIdxList [ ] = { - 1 } ; static const rtwCAPI_Signals rtRootInputs [ ] = { { 0 , 0 , ( NULL ) , ( NULL ) , 0 , 0 , 0 , 0 , 0 } } ; static const rtwCAPI_Signals rtRootOutputs [ ] = { { 0 , 0 , ( NULL ) , ( NULL ) , 0 , 0 , 0 , 0 , 0 } } ; static const rtwCAPI_ModelParameters rtModelParameters [ ] = { { 21 , TARGET_STRING ( "A_c" ) , 0 , 5 , 0 } , { 22 , TARGET_STRING ( "A_v" ) , 0 , 1 , 0 } , { 23 , TARGET_STRING ( "DELTA" ) , 0 , 4 , 0 } , { 24 , TARGET_STRING ( "K" ) , 0 , 4 , 0 } , { 25 , TARGET_STRING ( "Kd" ) , 0 , 1 , 0 } , { 26 , TARGET_STRING ( "Ki" ) , 0 , 1 , 0 } , { 27 , TARGET_STRING ( "Kp" ) , 0 , 1 , 0 } , { 28 , TARGET_STRING ( "M_m" ) , 0 , 1 , 0 } , { 29 , TARGET_STRING ( "T_s" ) , 0 , 4 , 0 } , { 30 , TARGET_STRING ( "q0_A" ) , 0 , 5 , 0 } , { 31 , TARGET_STRING ( "qd0_A" ) , 0 , 5 , 0 } , { 32 , TARGET_STRING ( "qdd0_A" ) , 0 , 5 , 0 } , { 33 , TARGET_STRING ( "t_LPF" ) , 0 , 4 , 0 } , { 34 , TARGET_STRING ( "t_const" ) , 0 , 4 , 0 } , { 35 , TARGET_STRING ( "t_fade" ) , 0 , 4 , 0 } , { 0 , ( NULL ) , 0 , 0 , 0 } } ;
 #ifndef HOST_CAPI_BUILD
 static void * rtDataAddrMap [ ] = { & rtB . faqro4qsbw [ 0 ] , & rtB .
 be34bt2ox5 [ 0 ] , & rtB . bzl0ko0cuy [ 0 ] , & rtB . ovthouobfc [ 0 ] , &
 rtB . jym5i5fv03 [ 0 ] , & rtB . gz4je3xrs2 [ 0 ] , & rtB . gm5u2wszg5 [ 0 ]
 , & rtB . b3q0dwdslb [ 0 ] , & rtB . ikueevaqcu [ 0 ] , & rtB . jbqnkbo01d [
-0 ] , & rtB . kd1lrgsfm5 [ 0 ] , & rtB . fa5pa5xss3 [ 0 ] , & rtB .
-dfgp2cfok2 [ 0 ] , & rtB . m0zpelvx4c [ 0 ] , & rtB . ml11i2hghx [ 0 ] , &
-rtB . iaqh5zb44n [ 0 ] , & rtB . duhcegxiww [ 0 ] , & rtB . ayze2qgrmj [ 0 ]
-, & rtP . integrateerr_gainval , & rtP . integrateerr_IC , & rtP . A_c [ 0 ]
-, & rtP . A_v [ 0 ] , & rtP . DELTA , & rtP . Kd [ 0 ] , & rtP . Ki [ 0 ] , &
-rtP . Kp [ 0 ] , & rtP . M_m [ 0 ] , & rtP . T_s , & rtP . q0_A [ 0 ] , & rtP
-. qd0_A [ 0 ] , & rtP . qdd0_A [ 0 ] , } ; static int32_T * rtVarDimsAddrMap
-[ ] = { ( NULL ) } ;
+0 ] , & rtB . kd1lrgsfm5 [ 0 ] , & rtB . lhkkowo0nn , & rtB . fa5pa5xss3 [ 0
+] , & rtB . dfgp2cfok2 [ 0 ] , & rtB . m0zpelvx4c [ 0 ] , & rtB . ml11i2hghx
+[ 0 ] , & rtB . iaqh5zb44n [ 0 ] , & rtB . duhcegxiww [ 0 ] , & rtB .
+ayze2qgrmj [ 0 ] , & rtP . integrateerr_gainval , & rtP . integrateerr_IC , &
+rtP . A_c [ 0 ] , & rtP . A_v [ 0 ] , & rtP . DELTA , & rtP . K , & rtP . Kd
+[ 0 ] , & rtP . Ki [ 0 ] , & rtP . Kp [ 0 ] , & rtP . M_m [ 0 ] , & rtP . T_s
+, & rtP . q0_A [ 0 ] , & rtP . qd0_A [ 0 ] , & rtP . qdd0_A [ 0 ] , & rtP .
+t_LPF , & rtP . t_const , & rtP . t_fade , } ; static int32_T *
+rtVarDimsAddrMap [ ] = { ( NULL ) } ;
 #endif
 static TARGET_CONST rtwCAPI_DataTypeMap rtDataTypeMap [ ] = { { "double" ,
 "real_T" , 0 , 0 , sizeof ( real_T ) , ( uint8_T ) SS_DOUBLE , 0 , 0 , 0 } }
@@ -50,13 +51,13 @@ static TARGET_CONST rtwCAPI_ElementMap rtElementMap [ ] = { { ( NULL ) , 0 ,
 0 , 0 , 0 } , } ; static const rtwCAPI_DimensionMap rtDimensionMap [ ] = { {
 rtwCAPI_MATRIX_COL_MAJOR , 0 , 2 , 0 } , { rtwCAPI_MATRIX_COL_MAJOR , 2 , 2 ,
 0 } , { rtwCAPI_MATRIX_COL_MAJOR , 4 , 2 , 0 } , { rtwCAPI_MATRIX_COL_MAJOR ,
-6 , 2 , 0 } , { rtwCAPI_VECTOR , 0 , 2 , 0 } , { rtwCAPI_SCALAR , 8 , 2 , 0 }
+6 , 2 , 0 } , { rtwCAPI_SCALAR , 8 , 2 , 0 } , { rtwCAPI_VECTOR , 0 , 2 , 0 }
 } ; static const uint_T rtDimensionArray [ ] = { 5 , 1 , 5 , 5 , 5 , 10 , 10
 , 1 , 1 , 1 } ; static const real_T rtcapiStoredFloats [ ] = { 0.0 , 0.02 ,
 0.01 , 0.005 } ; static const rtwCAPI_FixPtMap rtFixPtMap [ ] = { { ( NULL )
 , ( NULL ) , rtwCAPI_FIX_RESERVED , 0 , 0 , ( boolean_T ) 0 } , } ; static
 const rtwCAPI_SampleTimeMap rtSampleTimeMap [ ] = { { ( const void * ) &
-rtcapiStoredFloats [ 0 ] , ( const void * ) & rtcapiStoredFloats [ 0 ] , ( int8_T ) 0 , ( uint8_T ) 0 } , { ( const void * ) & rtcapiStoredFloats [ 1 ] , ( const void * ) & rtcapiStoredFloats [ 0 ] , ( int8_T ) 3 , ( uint8_T ) 0 } , { ( const void * ) & rtcapiStoredFloats [ 2 ] , ( const void * ) & rtcapiStoredFloats [ 0 ] , ( int8_T ) 2 , ( uint8_T ) 0 } , { ( const void * ) & rtcapiStoredFloats [ 3 ] , ( const void * ) & rtcapiStoredFloats [ 0 ] , ( int8_T ) 1 , ( uint8_T ) 0 } } ; static rtwCAPI_ModelMappingStaticInfo mmiStatic = { { rtBlockSignals , 18 , rtRootInputs , 0 , rtRootOutputs , 0 } , { rtBlockParameters , 2 , rtModelParameters , 11 } , { ( NULL ) , 0 } , { rtDataTypeMap , rtDimensionMap , rtFixPtMap , rtElementMap , rtSampleTimeMap , rtDimensionArray } , "float" , { 2810819074U , 2608164057U , 1166013076U , 2037580556U } , ( NULL ) , 0 , ( boolean_T ) 0 , rt_LoggedStateIdxList } ; const rtwCAPI_ModelMappingStaticInfo * IDRA_ideal_GetCAPIStaticMap ( void ) { return & mmiStatic ; }
+rtcapiStoredFloats [ 0 ] , ( const void * ) & rtcapiStoredFloats [ 0 ] , ( int8_T ) 0 , ( uint8_T ) 0 } , { ( const void * ) & rtcapiStoredFloats [ 1 ] , ( const void * ) & rtcapiStoredFloats [ 0 ] , ( int8_T ) 3 , ( uint8_T ) 0 } , { ( const void * ) & rtcapiStoredFloats [ 2 ] , ( const void * ) & rtcapiStoredFloats [ 0 ] , ( int8_T ) 2 , ( uint8_T ) 0 } , { ( const void * ) & rtcapiStoredFloats [ 3 ] , ( const void * ) & rtcapiStoredFloats [ 0 ] , ( int8_T ) 1 , ( uint8_T ) 0 } } ; static rtwCAPI_ModelMappingStaticInfo mmiStatic = { { rtBlockSignals , 19 , rtRootInputs , 0 , rtRootOutputs , 0 } , { rtBlockParameters , 2 , rtModelParameters , 15 } , { ( NULL ) , 0 } , { rtDataTypeMap , rtDimensionMap , rtFixPtMap , rtElementMap , rtSampleTimeMap , rtDimensionArray } , "float" , { 405011508U , 1703298597U , 4191889648U , 1454577562U } , ( NULL ) , 0 , ( boolean_T ) 0 , rt_LoggedStateIdxList } ; const rtwCAPI_ModelMappingStaticInfo * IDRA_ideal_GetCAPIStaticMap ( void ) { return & mmiStatic ; }
 #ifndef HOST_CAPI_BUILD
 void IDRA_ideal_InitializeDataMapInfo ( void ) { rtwCAPI_SetVersion ( ( *
 rt_dataMapInfoPtr ) . mmi , 1 ) ; rtwCAPI_SetStaticMap ( ( *
