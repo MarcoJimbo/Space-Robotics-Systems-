@@ -32,7 +32,7 @@
 #define NSAMPLE_TIMES (5) 
 #define NINPUTS (0)       
 #define NOUTPUTS (0)     
-#define NBLOCKIO (31) 
+#define NBLOCKIO (32) 
 #define NUM_ZC_EVENTS (0) 
 #ifndef NCSTATES
 #define NCSTATES (10)   
@@ -48,26 +48,27 @@
 #ifndef IN_RACCEL_MAIN
 #endif
 typedef struct { real_T duhcegxiww [ 5 ] ; real_T lhkkowo0nn ; real_T
-m0zpelvx4c [ 5 ] ; real_T fa5pa5xss3 [ 5 ] ; real_T dfgp2cfok2 [ 5 ] ; real_T
-iaqh5zb44n [ 5 ] ; real_T eridgjr4ky ; real_T ayze2qgrmj [ 5 ] ; real_T
-ml11i2hghx [ 5 ] ; real_T jgfeqbyr5s [ 5 ] ; real_T dwu33zmije [ 5 ] ; real_T
-gjrxh0fggm [ 5 ] ; real_T nkffw5s2fh [ 5 ] ; real_T ikueevaqcu [ 10 ] ;
-real_T jbqnkbo01d [ 5 ] ; real_T kd1lrgsfm5 [ 5 ] ; real_T b3q0dwdslb [ 5 ] ;
-real_T gm5u2wszg5 [ 5 ] ; real_T bzl0ko0cuy [ 25 ] ; real_T ovthouobfc [ 50 ]
-; real_T jym5i5fv03 [ 25 ] ; real_T gz4je3xrs2 [ 5 ] ; real_T be34bt2ox5 [ 5
-] ; real_T faqro4qsbw [ 5 ] ; } B ; typedef struct { kxg4oc5jml * mi3zr05m4m
-; real_T mznpziqilf [ 5 ] ; real_T emznpnkn2r [ 5 ] ; real_T etkg31qada [ 5 ]
-; real_T pb2ntxenga [ 5 ] ; real_T piesobdo33 [ 5 ] ; real_T lezbekocq5 ;
-struct { void * PrevTimePtr ; } kv5cshr4pr ; struct { void * PrevTimePtr ; }
-g1iyzdoa4d ; struct { void * PrevTimePtr ; } houxtxsdbs ; struct { void *
-LoggedData ; } fmultj3scx ; struct { void * AQHandles ; } kdjze5zyat ; struct
-{ void * AQHandles ; } omeeantnzf ; struct { void * AQHandles ; } mfwodyrjey
-; struct { void * AQHandles ; } fyfgkslcyk ; struct { void * AQHandles ; }
-fdqevx30qz ; struct { void * AQHandles ; } lurh2sfopt ; struct { void *
-AQHandles ; } p4sjgoac5d ; struct { void * LoggedData ; } njtg3wlgpq ; struct
-{ void * LoggedData ; } g41jsyd2ce ; struct { void * LoggedData ; }
-jveh5kwnyn ; struct { void * LoggedData ; } d1wedjrugl ; struct { void *
-LoggedData ; } hlbe0u5set ; struct { void * LoggedData ; } atle5sx0dw ;
+clzeg0mgxn [ 5 ] ; real_T m0zpelvx4c [ 5 ] ; real_T fa5pa5xss3 [ 5 ] ; real_T
+dfgp2cfok2 [ 5 ] ; real_T iaqh5zb44n [ 5 ] ; real_T eridgjr4ky ; real_T
+ayze2qgrmj [ 5 ] ; real_T ml11i2hghx [ 5 ] ; real_T jgfeqbyr5s [ 5 ] ; real_T
+dwu33zmije [ 5 ] ; real_T gjrxh0fggm [ 5 ] ; real_T nkffw5s2fh [ 5 ] ; real_T
+ikueevaqcu [ 10 ] ; real_T jbqnkbo01d [ 5 ] ; real_T kd1lrgsfm5 [ 5 ] ;
+real_T b3q0dwdslb [ 5 ] ; real_T gm5u2wszg5 [ 5 ] ; real_T bzl0ko0cuy [ 25 ]
+; real_T ovthouobfc [ 50 ] ; real_T jym5i5fv03 [ 25 ] ; real_T gz4je3xrs2 [ 5
+] ; real_T be34bt2ox5 [ 5 ] ; real_T faqro4qsbw [ 5 ] ; } B ; typedef struct
+{ kxg4oc5jml * mi3zr05m4m ; real_T mznpziqilf [ 5 ] ; real_T emznpnkn2r [ 5 ]
+; real_T etkg31qada [ 5 ] ; real_T pb2ntxenga [ 5 ] ; real_T piesobdo33 [ 5 ]
+; real_T lezbekocq5 ; struct { void * PrevTimePtr ; } kv5cshr4pr ; struct {
+void * PrevTimePtr ; } g1iyzdoa4d ; struct { void * PrevTimePtr ; }
+houxtxsdbs ; struct { void * LoggedData ; } fmultj3scx ; struct { void *
+AQHandles ; } kdjze5zyat ; struct { void * AQHandles ; } omeeantnzf ; struct
+{ void * AQHandles ; } mfwodyrjey ; struct { void * AQHandles ; } fyfgkslcyk
+; struct { void * AQHandles ; } fdqevx30qz ; struct { void * AQHandles ; }
+lurh2sfopt ; struct { void * AQHandles ; } p4sjgoac5d ; struct { void *
+LoggedData ; } njtg3wlgpq ; struct { void * LoggedData ; } g41jsyd2ce ;
+struct { void * LoggedData ; } jveh5kwnyn ; struct { void * LoggedData ; }
+d1wedjrugl ; struct { void * LoggedData ; } hlbe0u5set ; struct { void *
+LoggedData ; } atle5sx0dw ; struct { void * LoggedData ; } i5aivn5bzu ;
 struct { void * LoggedData ; } cgspc25xxu ; struct { void * LoggedData ; }
 ma4rew40gx ; struct { void * LoggedData ; } e4kfppx3aw ; int32_T kzlwqraqij ;
 int32_T h3vk22mn5c ; int32_T lcwydbxwp2 ; int32_T cvrmw0cqs3 ; int32_T
