@@ -1,0 +1,91 @@
+{
+  "robot_name": "IDRA",
+  "base_frame": "base_link",
+  "tool_frame": "end_effector",
+  "joints_number": 5,
+
+  "links": [
+    {
+      "name": "link1",
+      "type": "fixtious",
+      "lenght": 0,
+      "mass": 0,
+      "inertia": { "Ixx": 0, "Iyy": 0, "Izz": 0 },
+      "CoM": 0
+    },
+    {
+      "name": "link2",
+      "type": "physical",
+      "lenght": 0.7,
+      "mass": 4.091178303045477,
+      "inertia": { "Ixx": 0.0007670959318210267, "Iyy": 0.169945842050883, "Izz": 0.169945842050883 },
+      "CoM": 0.35
+    },
+    {
+      "name": "link3",
+      "type": "physical",
+      "lenght": 0.5,
+      "mass": 2.922270216461055,
+      "inertia": { "Ixx": 0.0005479256655864476, "Iyy": 0.062944482849981, "Izz": 0.062944482849981 },
+      "CoM": 0.25
+    },
+    {
+      "name": "link4",
+      "type": "physical",
+      "lenght": 0.2,
+      "mass": 1.168908086584422,
+      "inertia": { "Ixx": 0.0002191702662345790, "Iyy": 0.004721901624765, "Izz": 0.004721901624765 },
+      "CoM": 0.1
+    },
+    {
+      "name": "link5",
+      "type": "physical",
+      "lenght": 0.2,
+      "mass": 1.168908086584422,
+      "inertia": { "Ixx": 0.0002191702662345790, "Iyy": 0.004721901624765, "Izz": 0.004721901624765 },
+      "CoM": 0.1
+    }
+  ],
+
+  "joints": [
+    {
+      "name": "joint1",
+      "type": "revolute",
+      "MDH": { "theta": "q1", "d": 0, "a": 0, "alpha": 0 },
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+    },
+    {
+      "name": "joint2",
+      "type": "revolute",
+      "MDH": { "theta": "q2", "d": 0, "a": 0, "alpha": -1.570796326794897 },
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+    },
+    {
+      "name": "joint3",
+      "type": "revolute",
+      "MDH": { "theta": "q3", "d": 0, "a": 0.7, "alpha": 0 },
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+    },
+    {
+      "name": "joint4",
+      "type": "revolute",
+      "MDH": { "theta": "q4", "d": 0, "a": 0.5, "alpha": 0 },
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+    },
+    {
+      "name": "joint5",
+      "type": "revolute",
+      "MDH": { "theta": "q5", "d": 0, "a": 0.2, "alpha": 0 },
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+    }
+  ],
+
+  "end_effector": [
+    {
+      "name": "joint_EE",
+      "type": "fixed",
+      "MDH": { "theta": 0, "d": 0, "a": 0.2, "alpha": 0 },
+      "DC_motor": { "I": 0, "b": 0, "tc": 0, "gear_ratio": 1, "R": 0, "km": 0, "ke": 0 }
+    }
+  ]
+}
