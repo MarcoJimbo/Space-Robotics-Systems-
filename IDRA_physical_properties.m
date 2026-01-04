@@ -4,7 +4,7 @@
 clear; close all; clc; format long
 
 % density [kg/m^3] Alluminio
-density = 2700;
+density = 4510;
 
 %% Link 1 (fictitious null link)
 
@@ -18,32 +18,32 @@ I1_z = 0;
 %% Link 2
 
 % radii [m]
-R2_e = 5*10^-2; 
-R2_i = 4.5*10^-2;
+R2_e = 4*10^-2; 
+R2_i = 3.5*10^-2;
 % lenght [m]
 L2 = 70*10^-2;
 
 %% Link 3
 
 % radii [m]
-R3_e = 5*10^-2; 
-R3_i = 4.5*10^-2;
+R3_e = 4*10^-2; 
+R3_i = 3.5*10^-2;
 % lenght [m]
 L3 = 50*10^-2;
 
 %% Link 4
 
 % radii [m]
-R4_e = 5*10^-2; 
-R4_i = 4.5*10^-2;
+R4_e = 4*10^-2; 
+R4_i = 3.5*10^-2;
 % lenght [m]
 L4 = 20*10^-2;
 
 %% Link 5
 
 % radii [m]
-R5_e = 5*10^-2; 
-R5_i = 4.5*10^-2;
+R5_e = 4*10^-2; 
+R5_i = 3.5*10^-2;
 % lenght [m]
 L5 = 20*10^-2;
 
