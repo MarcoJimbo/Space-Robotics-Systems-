@@ -45,75 +45,75 @@
 
                     ;% rtP.K
                     section.data(4).logicalSrcIdx = 3;
-                    section.data(4).dtTransOffset = 31;
+                    section.data(4).dtTransOffset = 35;
 
                     ;% rtP.Kd
                     section.data(5).logicalSrcIdx = 4;
-                    section.data(5).dtTransOffset = 32;
+                    section.data(5).dtTransOffset = 36;
 
                     ;% rtP.Ki
                     section.data(6).logicalSrcIdx = 5;
-                    section.data(6).dtTransOffset = 57;
+                    section.data(6).dtTransOffset = 61;
 
                     ;% rtP.Kp
                     section.data(7).logicalSrcIdx = 6;
-                    section.data(7).dtTransOffset = 82;
+                    section.data(7).dtTransOffset = 86;
 
                     ;% rtP.M_m
                     section.data(8).logicalSrcIdx = 7;
-                    section.data(8).dtTransOffset = 107;
+                    section.data(8).dtTransOffset = 111;
 
                     ;% rtP.Ra
                     section.data(9).logicalSrcIdx = 8;
-                    section.data(9).dtTransOffset = 132;
+                    section.data(9).dtTransOffset = 136;
 
                     ;% rtP.T_moto_B
                     section.data(10).logicalSrcIdx = 9;
-                    section.data(10).dtTransOffset = 137;
+                    section.data(10).dtTransOffset = 141;
 
                     ;% rtP.T_s
                     section.data(11).logicalSrcIdx = 10;
-                    section.data(11).dtTransOffset = 138;
+                    section.data(11).dtTransOffset = 142;
 
                     ;% rtP.gear_ratio
                     section.data(12).logicalSrcIdx = 11;
-                    section.data(12).dtTransOffset = 139;
+                    section.data(12).dtTransOffset = 143;
 
                     ;% rtP.ke
                     section.data(13).logicalSrcIdx = 12;
-                    section.data(13).dtTransOffset = 144;
+                    section.data(13).dtTransOffset = 148;
 
                     ;% rtP.km
                     section.data(14).logicalSrcIdx = 13;
-                    section.data(14).dtTransOffset = 149;
+                    section.data(14).dtTransOffset = 153;
 
                     ;% rtP.q0_B
                     section.data(15).logicalSrcIdx = 14;
-                    section.data(15).dtTransOffset = 154;
+                    section.data(15).dtTransOffset = 158;
 
                     ;% rtP.qd0_B
                     section.data(16).logicalSrcIdx = 15;
-                    section.data(16).dtTransOffset = 159;
+                    section.data(16).dtTransOffset = 163;
 
                     ;% rtP.qdd0_B
                     section.data(17).logicalSrcIdx = 16;
-                    section.data(17).dtTransOffset = 164;
+                    section.data(17).dtTransOffset = 168;
 
                     ;% rtP.t_const
                     section.data(18).logicalSrcIdx = 17;
-                    section.data(18).dtTransOffset = 169;
+                    section.data(18).dtTransOffset = 173;
 
                     ;% rtP.t_fade
                     section.data(19).logicalSrcIdx = 18;
-                    section.data(19).dtTransOffset = 170;
+                    section.data(19).dtTransOffset = 174;
 
                     ;% rtP.integrateerr_gainval
                     section.data(20).logicalSrcIdx = 19;
-                    section.data(20).dtTransOffset = 171;
+                    section.data(20).dtTransOffset = 175;
 
                     ;% rtP.integrateerr_IC
                     section.data(21).logicalSrcIdx = 20;
-                    section.data(21).dtTransOffset = 172;
+                    section.data(21).dtTransOffset = 176;
 
             nTotData = nTotData + section.nData;
             paramMap.sections(1) = section;
@@ -593,8 +593,8 @@
     ;%
 
 
-    targMap.checksum0 = 1258645839;
-    targMap.checksum1 = 3382265576;
-    targMap.checksum2 = 2204390589;
-    targMap.checksum3 = 4127658149;
+    targMap.checksum0 = 3166635648;
+    targMap.checksum1 = 935449255;
+    targMap.checksum2 = 1003340627;
+    targMap.checksum3 = 780699501;
 

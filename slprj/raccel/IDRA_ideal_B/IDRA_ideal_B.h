@@ -84,8 +84,8 @@ pvp3qg02yh ; boolean_T b0om0n1qji ; } DW ; typedef struct { real_T bmpdykjrkv
 5 ] ; real_T oxeacfkwk5 [ 5 ] ; } XDot ; typedef struct { boolean_T
 bmpdykjrkv [ 5 ] ; boolean_T oxeacfkwk5 [ 5 ] ; } XDis ; typedef struct {
 rtwCAPI_ModelMappingInfo mmi ; } DataMapInfo ; struct P_ { real_T A_c [ 5 ] ;
-real_T A_v [ 25 ] ; real_T DELTA ; real_T K ; real_T Kd [ 25 ] ; real_T Ki [
-25 ] ; real_T Kp [ 25 ] ; real_T M_m [ 25 ] ; real_T Ra [ 5 ] ; real_T
+real_T A_v [ 25 ] ; real_T DELTA [ 5 ] ; real_T K ; real_T Kd [ 25 ] ; real_T
+Ki [ 25 ] ; real_T Kp [ 25 ] ; real_T M_m [ 25 ] ; real_T Ra [ 5 ] ; real_T
 T_moto_B ; real_T T_s ; real_T gear_ratio [ 5 ] ; real_T ke [ 5 ] ; real_T km
 [ 5 ] ; real_T q0_B [ 5 ] ; real_T qd0_B [ 5 ] ; real_T qdd0_B [ 5 ] ; real_T
 t_const ; real_T t_fade ; real_T integrateerr_gainval ; real_T

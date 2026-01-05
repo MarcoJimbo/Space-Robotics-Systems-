@@ -52,31 +52,36 @@
       "name": "joint1",
       "type": "revolute",
       "MDH": { "theta": "q1", "d": 0, "a": 0, "alpha": 0 },
-      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 },
+      "encoder" : {"type": "absolute", "N_track": 12} 
     },
     {
       "name": "joint2",
       "type": "revolute",
       "MDH": { "theta": "q2", "d": 0, "a": 0, "alpha": -1.570796326794897 },
-      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 },
+      "encoder" : {"type": "absolute", "N_track": 12} 
     },
     {
       "name": "joint3",
       "type": "revolute",
       "MDH": { "theta": "q3", "d": 0, "a": 0.7, "alpha": 0 },
-      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 },
+      "encoder" : {"type": "absolute", "N_track": 12} 
     },
     {
       "name": "joint4",
       "type": "revolute",
       "MDH": { "theta": "q4", "d": 0, "a": 0.5, "alpha": 0 },
-      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 },
+      "encoder" : {"type": "absolute", "N_track": 12} 
     },
     {
       "name": "joint5",
       "type": "revolute",
       "MDH": { "theta": "q5", "d": 0, "a": 0.2, "alpha": 0 },
-      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 }
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 },
+      "encoder" : {"type": "absolute", "N_track": 12} 
     }
   ],
 
@@ -85,7 +90,8 @@
       "name": "joint_EE",
       "type": "fixed",
       "MDH": { "theta": 0, "d": 0, "a": 0.2, "alpha": 0 },
-      "DC_motor": { "I": 0, "b": 0, "tc": 0, "gear_ratio": 1, "R": 0, "km": 0, "ke": 0 }
+      "DC_motor": { "I": 0.000054, "b": 0.0000146, "tc": 0.01 , "gear_ratio": 100, "R": 0.103, "km": 0.0385, "ke": 0.0385 },
+      "encoder" : {"type": "absolute", "N_track": 12} 
     }
   ]
 }

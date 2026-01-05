@@ -67,9 +67,16 @@ Ki = eye(N_joints) * ki;
 Kp = eye(N_joints) * kp;
 Kd = eye(N_joints) * kd;
 
-% parametri quantizzazione 
-steps_encoder = 4096;
-DELTA = 2*pi / steps_encoder; % [rad] step angolare quantizzazione encoder
+% parametri encoders
+% inizializzazione
+DELTA = zeros(N_joints,1);
+% riempimento
+for i = 1:N_joints
+    N_tracks = IDRA.joints(i).encoder.N_track;
+    steps_encoder = 2^N_tracks;
+    DELTA(i) = 2*pi / steps_encoder; % [rad] risoluzione encoder
+end
+
 
 % parametri differenziazione
 K = 5; % numero di misure utilizzate per ricostruzione velocità
