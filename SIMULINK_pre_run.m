@@ -59,10 +59,10 @@ T_moto_B = 34.085; % [s]
 t_sim = min([T_s,T_u,T_c,T_gt]);
 
 
-% GAINS
-ki = 5; % da sostituire con  gain scelto
-kp = 10; % da sostituire con  gain scelto
-kd = 5; % da sostituire con  gain scelto
+% GAINS trovati da Ziegler-Nichols method
+ki = 28; % integrative
+kp = 21; % proportional
+kd = 4; % derivative
 Ki = eye(N_joints) * ki;
 Kp = eye(N_joints) * kp;
 Kd = eye(N_joints) * kd;
@@ -75,7 +75,7 @@ DELTA = 2*pi / steps_encoder; % [rad] step angolare quantizzazione encoder
 K = 5; % numero di misure utilizzate per ricostruzione velocità
 t_LPF = 10; % [s] durata tempo LPF
 t_fade = 0.5; % [s] durata fade da LPF a raw
-t_const = 2e-2; % costante di tempo LPF
+t_const = 0.02; % costante di tempo LPF
 
 % parametri dei motori
 % inizializzazione

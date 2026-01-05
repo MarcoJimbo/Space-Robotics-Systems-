@@ -1,16 +1,14 @@
 @echo off
-
-call "setup_mingw.bat"
+set skipSetupArg=%1
+if "%skipSetupArg%" NEQ "skip_setup_msvc" (
+call "setup_msvc.bat"
+)
 
 cd .
-
-chcp 1252
-
-if "%1"=="" ("%MINGW_ROOT%\mingw32-make.exe"  -j 7 -l 8 -Oline -f IDRA_mismodeled_A.mk all) else ("%MINGW_ROOT%\mingw32-make.exe"  -j 7 -l 8 -Oline -f IDRA_mismodeled_A.mk %1)
+nmake -f IDRA_mismodeled_A.mk  RSIM_SOLVER_SELECTION=1 PCMATLABROOT="C:\\Program Files\\MATLAB\\R2024b" EXTMODE_STATIC_ALLOC=0 EXTMODE_STATIC_ALLOC_SIZE=1000000 EXTMODE_TRANSPORT=0 TMW_EXTMODE_TESTING=0 RSIM_PARAMETER_LOADING=1 OPTS="-DTGTCONN -DIS_SIM_TARGET -DNRT -DRSIM_PARAMETER_LOADING -DRSIM_WITH_SL_SOLVER -DUSE_LOCALHOST -DENABLE_SLEXEC_SSBRIDGE=1 -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0 -DON_TARGET_WAIT_FOR_START=0 -DTID01EQ=1"
 @if errorlevel 1 goto error_exit
-
-exit /B 0
+exit 0
 
 :error_exit
 echo The make command returned an error of %errorlevel%
-exit /B 1
+exit 1
