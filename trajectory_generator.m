@@ -22,7 +22,7 @@ env = setObstacles(T_Station_Base);
 q_start = [0; -2.4435; 1.5708; 1.5708; 1.5708];
 color = [1 0 0];
 rbt_plot(IDRA,q_start,color,env)
-title('HEIL IDRA');
+title('Rest position IDRA');
 
 %% Inverse Kinematics
 
@@ -160,8 +160,12 @@ end
 for i = 1:200:length(t_vec)
     figure(7)
     rbt_plot(IDRA,q_traj(:,i),color,env)
+    t = t_vec(i);
+    title(compose('Generated Trajectory (t = %.2f s)',t));
     pause(0.5)
-    clf
+    if i < length(t_vec)-200
+        clf
+    end
 end
 
 % metto prima riga della traiettoria = vettore dei tempi
@@ -173,36 +177,3 @@ ddq_trajA = [ t_vec(1:size(ddq_trajA,2)) ; ddq_trajA ];
 q_trajB = [ t_vec(size(q_trajA,2)+1:end) ; q_trajB ];
 dq_trajB = [ t_vec(size(dq_trajA,2)+1:end) ; dq_trajB ];
 ddq_trajB = [ t_vec(size(ddq_trajA,2)+1:end) ; ddq_trajB ];
-
-%% test function
-% FK
-[T,p] = FK(IDRA,Qn_Sample);
-alpha1 = R2eul(T(1:3,1:3),"123");
-[T1,p1] = FK(IDRA,Qn_Target);
-alpha2 = R2eul(T1(1:3,1:3),"123");
-%X = [T(1:3,4);alpha];
-% num IK
-[Qn2,status] = numerical_IK(IDRA, [X_Sample_Base;Phi_Sample_Base], "123",[0;0;0;0;0]);
-[T1,p1] = FK(IDRA,Qn2);
-% num Newton_Euler
-qd_val = [0,0,0,0,0]';
-qdd_val = [0,0,0,0,0]';
-% sym Newton_Euler
-n_joints = IDRA.joints_number;
-q_sym   = sym('q'  , [n_joints 1], 'real');
-qd_sym = sym('qd'  , [n_joints 1], 'real');
-qdd_sym  = sym('qdd'  , [n_joints 1], 'real');
-[tau_sym] = Newton_Euler_symbolic(IDRA,q_sym,qd_sym,qdd_sym,2,0.1,3.71);
-% how to value tau_fun for q qd qdd choices
-tau_fun = matlabFunction(tau_sym, 'Vars', {q_sym, qd_sym, qdd_sym});
-tau_num = tau_fun(q_val, qd_val, qdd_val);
-% i risultati ottenuti in numerico o sym coincidono :)
-[M,G,V,B,C,mu,nu,status_decompose_tau] = decompose_tau(tau_sym,qd_sym,qdd_sym);
-% TO DO creare diverse function che valutano separatamente M C G B V
-
-
-
-
-
-
-

@@ -41,7 +41,12 @@ pos(end,:) = T(1:3,4)';
 hold on; grid on; axis equal;
 plot3(pos(:,1), pos(:,2), pos(:,3), '-o', 'LineWidth', 2, 'MarkerSize', 6, 'MarkerFaceColor', color,'Color',color);
 
-if ~isempty(env), show(env{1}), show(env{2}), end
+% plot enviroment
+if ~isempty(env)
+    for i = 1:size(env,2)
+        plotBox(env(i).dims, env(i).Pose, 'FaceColor', [1 0 0]); 
+    end
+end
 
 xlabel('X'); ylabel('Y'); zlabel('Z');
-view([0 0]);
+view([10 10]);
