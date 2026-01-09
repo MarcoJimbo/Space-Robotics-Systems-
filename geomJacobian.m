@@ -13,14 +13,20 @@ function J = geomJacobian(rbt,q)
 
 n_joints = rbt.joints_number;
 j = rbt.joints;
-Jp = zeros(3,n_joints);
-Jo = zeros(3,n_joints);
+if isa(q,'sym')
+    Jp = sym(zeros(3,n_joints));
+    Jo = sym(zeros(3,n_joints));
+else
+    Jp = zeros(3,n_joints);
+    Jo = zeros(3,n_joints);
+end
+       
 [~,pe] = FK(rbt,q);
 
 % jacobian computation
 for i = 1:n_joints  
     [Ti,p] = FK(rbt,q,j(i).name);
-    z = Ti(1:3,1:3) * [0;0;1];
+    z = Ti(1:3,3);
     if strcmp(j(i).type,'revolute')
        Jp(:,i) = cross(z,(pe-p));
        Jo(:,i) = z;
@@ -30,7 +36,7 @@ for i = 1:n_joints
     end
 end
 
-J = [Jp; Jo];
-
+J(1:3,:) = Jp;
+J(4:6,:) = Jo;
 end
 
