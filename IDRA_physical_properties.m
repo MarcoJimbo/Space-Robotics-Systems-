@@ -3,8 +3,8 @@
 
 clear; close all; clc; format long
 
-% density [kg/m^3] Alluminio
-density = 4510*1.1;
+% density [kg/m^3] Titanio
+density = 4510; % * 1.1 nel caso mismodeled
 
 %% Link 1 (fictitious null link)
 
