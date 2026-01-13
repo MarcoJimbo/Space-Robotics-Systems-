@@ -143,22 +143,27 @@ ddq_traj = [ddq_trajA, ddq_trajB];
 for i = 1:5
         figure
         subplot(1,3,1)
-        plot(t_vec(1:end),rad2deg(q_traj(i,:)),'r')
+        plot(t_vec(1:end),rad2deg(q_traj(i,:)),'r','LineWidth',2)
         xlabel('t [s]')
         ylabel('$\theta$ [deg]','Interpreter','latex')
+        title('Angle')
+        grid on
         subplot(1,3,2)
-        plot(t_vec(1:end),rad2deg(dq_traj(i,:)),'b')
+        plot(t_vec(1:end),rad2deg(dq_traj(i,:)),'b','LineWidth',2)
         xlabel('t [s]')
         ylabel('$\dot{\theta}$ [deg/s]','Interpreter','latex')
+        title('Velocity')
+        grid on
         subplot(1,3,3)
-        plot(t_vec(1:end),rad2deg(ddq_traj(i,:)),'g') 
+        plot(t_vec(1:end),rad2deg(ddq_traj(i,:)),'g','LineWidth',2) 
+        title('Acceleration')
         xlabel('t [s]')
         ylabel('$\dot{\dot{\theta}}\,[\mathrm{deg/s^{2}}]$','Interpreter','latex')
+        grid on
 end
 
-
+figure(7)
 for i = 1:200:length(t_vec)
-    figure(7)
     rbt_plot(IDRA,q_traj(:,i),color,env)
     t = t_vec(i);
     title(compose('Generated Trajectory (t = %.2f s)',t));

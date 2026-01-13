@@ -1,4 +1,4 @@
-function semi_axes = manip_ellips(rbt,q,type,plot_robot)
+function [semi_axes, w] = manip_ellips(rbt,q,type,plot_robot)
 
 Jfull = geomJacobian(rbt, q);
 switch type
@@ -10,7 +10,7 @@ end
 [U, S, ~] = svd(J);
 semi_axes_lengths = diag(S);
 semi_axes = U * S(1:3, 1:3);
-
+w = prod(semi_axes_lengths);
 % Generazione punti dell'ellissoide per il plot
 [xe, ye, ze] = sphere(30);
 points = [xe(:), ye(:), ze(:)] * S(1:3, 1:3);
@@ -21,8 +21,9 @@ Ex = reshape(rotated_points(:,1), size(xe)) + p(1);
 Ey = reshape(rotated_points(:,2), size(ye)) + p(2);
 Ez = reshape(rotated_points(:,3), size(ze)) + p(3);
 
+if plot_robot
 hold on;
-surf(Ex, Ey, Ez,'FaceColor', 'cyan', 'EdgeColor', 'none', 'FaceAlpha', 0.3);
+surf(Ex, Ey, Ez,'FaceColor', 'cyan', 'EdgeColor', 'b', 'FaceAlpha', 0.3);
 
 % Plot degli assi principali
 colors = ['r', 'g', 'b'];
@@ -33,19 +34,10 @@ for i = 1:3
 end
 grid on; axis equal;
 
-if plot_robot
 % plot robot
-rbt_plot(rbt,q,'k');
+rbt_plot(rbt,q,'r');
 % plot rover
-vx = [-1; 0; 0; -1];
-vy = [0; 0; 0; 0];
-vz = [0; 0; -0.5; -0.5];
-patch('XData', vx, 'YData', vy, 'ZData', vz, ...
-      'FaceColor', [0.5 0.5 0.5], ...
-      'EdgeColor', 'k', ...
-      'LineWidth', 1, ...
-      'FaceAlpha', 1); 
-view(3); 
+plot_rover
 grid on;
 axis equal;
 end

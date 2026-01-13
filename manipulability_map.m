@@ -1,6 +1,7 @@
 function manipulability_map(rbt,n,varargin)
 %% MANIPULABILITY MAP %%
-if nargin > 2, plot_robot = varargin{1}; conf = varargin{2}; end 
+if nargin > 2, plot_robot = varargin{1}; conf = []; end
+if nargin > 3, plot_robot = varargin{1}; conf = varargin{2}; end 
 % limits
 q1 = linspace(-pi, pi, n);
 q2 = linspace(-pi, pi, n);
@@ -12,12 +13,12 @@ W = [];
 X = [];
 Z = [];
 
-for i = 1:15
-    for j = 1:15
-        for k = 1:15
-            for l = 1:15
-                
-                q = [q1; q2(i); q3(j); q4(k); q5(l)];
+for i = 1:n
+    for j = 1:n
+        for k = 1:n
+            for l = 1:n
+                for m = 1:n
+                q = [q1(m); q2(i); q3(j); q4(k); q5(l)];
                 % Cinematica diretta
                 [~,p] = FK(rbt,q);
                 % Jacobiano
@@ -32,6 +33,7 @@ for i = 1:15
                 Z(end+1) = p(3);
                 W(end+1) = w;
                 end
+                end
             end
         end
     end
@@ -44,17 +46,9 @@ axis equal
 if plot_robot
 hold on
 % plot robot
+if ~isempty(conf)
 rbt_plot(rbt,conf,'k');
+end
 % plot rover
-vx = [-1; 0; 0; -1];
-vy = [0; 0; 0; 0];
-vz = [0; 0; -0.5; -0.5];
-patch('XData', vx, 'YData', vy, 'ZData', vz, ...
-      'FaceColor', [0.5 0.5 0.5], ...
-      'EdgeColor', 'k', ...
-      'LineWidth', 1, ...
-      'FaceAlpha', 1); 
-view(3); 
-grid on;
-axis equal;
+plot_rover
 end
