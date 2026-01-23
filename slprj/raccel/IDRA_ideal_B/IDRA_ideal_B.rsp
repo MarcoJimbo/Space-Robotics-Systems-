@@ -2,6 +2,7 @@
 IDRA_ideal_B_capi.obj
 IDRA_ideal_B_data.obj
 IDRA_ideal_B_tgtconn.obj
+rtGetNaN.obj
 rt_nonfinite.obj
 raccel_main.obj
 raccel_sup.obj

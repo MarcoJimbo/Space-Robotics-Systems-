@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   6 \
+    NumChartData   2 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -26,35 +26,6 @@
       SFName       ""\
       Path         ""\
       SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "q_prev"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "IDRA_mismodeled_B:18:535-541"\
-      Dimensions   [5]\
-    }\
-    ChartData {\
-      Name         "q_prev_not_empty"\
-      Description  "EmlPersistentSentinel"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "IDRA_mismodeled_B:18:535-541"\
-    }\
-    ChartData {\
-      Name         "is_init"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "IDRA_mismodeled_B:18:542-549"\
-    }\
-    ChartData {\
-      Name         "is_init_not_empty"\
-      Description  "EmlPersistentSentinel"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "IDRA_mismodeled_B:18:542-549"\
     }\
   }
   %return ChartDataElements

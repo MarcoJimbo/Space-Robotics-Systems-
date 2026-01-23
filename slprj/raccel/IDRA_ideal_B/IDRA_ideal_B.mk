@@ -77,12 +77,12 @@ TOOLCHAIN_NAME = [\
 #                            and do not build an executable
 
 MODEL                   = IDRA_ideal_B
-MODULES                 = IDRA_ideal_B.c IDRA_ideal_B_capi.c IDRA_ideal_B_data.c IDRA_ideal_B_tgtconn.c rt_nonfinite.c raccel_main.c raccel_sup.c raccel_mat.c simulink_solver_api.c raccel_utils.c slsa_sim_common_utils.c ext_svr.c updown.c ext_work.c rtiostream_interface.c rtiostream_tcpip.c rtiostream_utils.c
+MODULES                 = IDRA_ideal_B.c IDRA_ideal_B_capi.c IDRA_ideal_B_data.c IDRA_ideal_B_tgtconn.c rtGetNaN.c rt_nonfinite.c raccel_main.c raccel_sup.c raccel_mat.c simulink_solver_api.c raccel_utils.c slsa_sim_common_utils.c ext_svr.c updown.c ext_work.c rtiostream_interface.c rtiostream_tcpip.c rtiostream_utils.c
 PRODUCT                 = IDRA_ideal_B.exe
 MAKEFILE                = IDRA_ideal_B.mk
 MATLAB_ROOT             = C:\Program Files\MATLAB\R2024b
 ALT_MATLAB_ROOT         = C:\PROGRA~1\MATLAB\R2024b
-START_DIR               = C:\Users\marco\ONEDRI~1.IT\DOCUME~1\UNIVER~1\MAGIST~1\SPACER~1\NUOVAC~1\SPACE-~1
+START_DIR               = C:\Users\marco\ONEDRI~1.IT\DOCUME~1\UNIVER~1\MAGIST~1\SPACER~1\HOMEWO~1
 S_FUNCTIONS_LIB         = 
 NUMST                   = 4
 NCSTATES                = 10

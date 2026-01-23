@@ -36,7 +36,7 @@ qdd0_B = ddq_trajB(2:end,1); % da prendere da generazione traiettoria
 % frequenze caratteristiche schema di controllo
 f_s = 100; % [Hz] frequenze sensori = aggiornamento nu,mu,errors
 f_u = 50; % [Hz] frequenze aggiornamento M,B,C,G
-f_c = 50; % [Hz] frequenza del controllore
+f_c = 100; % [Hz] frequenza del controllore
 f_gt = 200; % [Hz] frequenza generazione della traiettoria
 
 % sample time blocchi schema di controllo
